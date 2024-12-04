@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -11,9 +13,7 @@ import lp.unife.it.models.Atleta;
 import lp.unife.it.models.AttivitaSportiva;
 import lp.unife.it.models.Iscrizione;
 import lp.unife.it.models.Polisportiva;
-import lp.unife.it.controllers.AtletiController;
-import lp.unife.it.controllers.RootLayoutController;
-
+import lp.unife.it.controllers.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -33,9 +33,11 @@ public class MainApp extends Application {
         this.primaryStage = stage;
         this.primaryStage.setTitle("AddressApp");
         initRootLayout();
-        showAtleti();
-        showAttivita();
-        showIscrizioni();
+        if (rootLayout != null) {
+            showAtleti();
+            showAttivita();
+            showIscrizioni();
+        }
     }
 
     public MainApp()
@@ -74,7 +76,7 @@ public class MainApp extends Application {
         // }
     }
 
-    private void showAtleti()
+    /*private void showAtleti()
     {
         try 
         {
@@ -83,7 +85,7 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("view/AtletiView.fxml"));
             AnchorPane atletiView = (AnchorPane) loader.load();
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(atletiView);
+            rootLayout.setRight(atletiView);
 
             // Give the controller access to the main app.
             AtletiController controller = loader.getController();
@@ -91,16 +93,94 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }*/
+    private void showAtleti() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/AtletiView.fxml"));
+            AnchorPane atletiView = (AnchorPane) loader.load();
+
+            // Trova il TabPane e il Tab per Atleti
+            TabPane tabPane = (TabPane) rootLayout.getCenter();
+            Tab atletiTab = tabPane.getTabs().get(0);
+            AnchorPane atletiContent = (AnchorPane) atletiTab.getContent();
+
+            // Aggiungi la view degli atleti al contenuto del tab
+            atletiContent.getChildren().clear();
+            atletiContent.getChildren().add(atletiView);
+
+            // Dai accesso al controller alla main app
+            AtletiController controller = loader.getController();
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void showAttivita()
+    /*private void showAttivita()
     {
+        try 
+        {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/AttivitaView.fxml"));
+            AnchorPane attivitàView = (AnchorPane) loader.load();
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(attivitàView);
 
+            // Give the controller access to the main app.
+            AttivitaController controller = loader.getController();
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
+
+    private void showAttivita() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/AttivitaView.fxml"));
+            AnchorPane attivitaView = (AnchorPane) loader.load();
+
+            // Trova il TabPane e il Tab per Attività
+            TabPane tabPane = (TabPane) rootLayout.getCenter();
+            Tab attivitaTab = tabPane.getTabs().get(1);
+            AnchorPane attivitaContent = (AnchorPane) attivitaTab.getContent();
+
+            // Aggiungi la view delle attività al contenuto del tab
+            attivitaContent.getChildren().clear();
+            attivitaContent.getChildren().add(attivitaView);
+
+            // Dai accesso al controller alla main app
+            AttivitaController controller = loader.getController();
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showIscrizioni()
     {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/IscrizioniView.fxml"));
+            AnchorPane iscrizioniView = (AnchorPane) loader.load();
 
+            // Trova il TabPane e il Tab per Attività
+            TabPane tabPane = (TabPane) rootLayout.getCenter();
+            Tab iscrizioniTab = tabPane.getTabs().get(2);
+            AnchorPane iscrizioniContent = (AnchorPane) iscrizioniTab.getContent();
+
+            // Aggiungi la view delle attività al contenuto del tab
+            iscrizioniContent.getChildren().clear();
+            iscrizioniContent.getChildren().add(iscrizioniView);
+
+            // Dai accesso al controller alla main app
+            IscrizioniController controller = loader.getController();
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Stage getPrimaryStage() 

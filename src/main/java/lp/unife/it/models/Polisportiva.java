@@ -102,6 +102,10 @@ public class Polisportiva {
         return result;
     }
 
+    public ObservableList<Iscrizione> getIscrizioni() {
+        return iscrizioni;
+    }
+
     // Metodi per gestire statistiche
     public int numeroAtletiIscrittiPerAttivita(AttivitaSportiva attivitaSportiva) {
         int count = 0;

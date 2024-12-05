@@ -14,29 +14,27 @@
         <menus>
           <Menu mnemonicParsing="false" text="Atleti">
             <items>
-              <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Open" />
-                  <MenuItem mnemonicParsing="false" text="Save " />
-                  <MenuItem mnemonicParsing="false" text="Save as" />
-                  <MenuItem mnemonicParsing="false" text="Exit" />
+              <MenuItem mnemonicParsing="false" text="Elimina" />
+                  <MenuItem mnemonicParsing="false" text="Apri" />
+                  <MenuItem mnemonicParsing="false" text="Salva" />
+                  <MenuItem mnemonicParsing="false" text="Salva con nome" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Attività">
                <items>
-                  <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Open" />
-                  <MenuItem mnemonicParsing="false" text="Save " />
-                  <MenuItem mnemonicParsing="false" text="Save as" />
-                  <MenuItem mnemonicParsing="false" text="Exit" />
+                  <MenuItem mnemonicParsing="false" text="Elimina" />
+                  <MenuItem mnemonicParsing="false" text="Apri" />
+                  <MenuItem mnemonicParsing="false" text="Salva" />
+                  <MenuItem mnemonicParsing="false" text="Salva con nome" />
+                  <MenuItem mnemonicParsing="false" text="Esci" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Iscrizioni">
                <items>
-                  <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Open" />
-                  <MenuItem mnemonicParsing="false" text="Save " />
-                  <MenuItem mnemonicParsing="false" text="Save as" />
-                  <MenuItem mnemonicParsing="false" text="Exit" />
+                  <MenuItem mnemonicParsing="false" text="Nuovo" />
+                  <MenuItem mnemonicParsing="false" text="Apri" />
+                  <MenuItem mnemonicParsing="false" text="Salva" />
+                  <MenuItem mnemonicParsing="false" text="Salva con nome" />
                </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Statistiche">
@@ -44,11 +42,16 @@
               <MenuItem mnemonicParsing="false" text="Mostra statistiche" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Informazioni">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Esci">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>

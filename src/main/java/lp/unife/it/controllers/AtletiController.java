@@ -2,10 +2,13 @@ package lp.unife.it.controllers;
 
 
 import javafx.fxml.FXML;
+import lp.unife.it.DateUtil;
 import lp.unife.it.MainApp;
 import javafx.scene.control.TableView;
 import lp.unife.it.models.*;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 
 public class AtletiController 
@@ -17,6 +20,8 @@ public class AtletiController
     private TableColumn<Atleta, String> firstNameColumn;
     @FXML
     private TableColumn<Atleta, String> lastNameColumn;
+    @FXML
+    private TableColumn<Atleta, Integer> idColumn;
     @FXML
     private Label firstNameLabel;
     @FXML
@@ -44,6 +49,8 @@ public class AtletiController
         cellData.getValue().cognomeProperty());
         lastNameColumn.setCellValueFactory(cellData ->
         cellData.getValue().nomeProperty());
+        idColumn.setCellValueFactory(cellData ->
+        cellData.getValue().idProperty().asObject());
 
         /*se metto intero nelle celle devo convertire con asobject
          * myIntegerColumn.setCellValueFactory(cellData ->
@@ -67,8 +74,7 @@ public class AtletiController
             addressLabel.setText(atleta.getIndirizzo());
             telephoneLabel.setText(atleta.getTelefono());
             emailLabel.setText(atleta.getEmail());
-            // TODO: We need a way to convert the birthday into a String!
-            //birthdayLabel.setText(DateUtil.format(atleta.getDataNascita()));
+            birthdayLabel.setText(DateUtil.format(atleta.getDataNascita()));
         } else {
             // Atleta is null, remove all the text.
             firstNameLabel.setText("");
@@ -83,18 +89,56 @@ public class AtletiController
     @FXML
     private void handleDeleteAtleta() 
     {
-
+        int selectedIndex = atletiTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            atletiTable.getItems().remove(selectedIndex);
+            System.out.println(mainApp.polisportiva.getAtleti());
+        } 
+        else
+        {
+            // Nothing selected.
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+            alert.showAndWait();
+        }
     }
 
     @FXML
     private void handleNewAtleta() 
     {
+        Atleta tempPerson = new Atleta();
+        tempPerson.setId();
+        boolean okClicked = mainApp.showAtletaEditDialog(tempPerson);
+        if (okClicked) 
+        {
+            mainApp.polisportiva.getAtleti().add(tempPerson);
+        }
 
     }
 
     @FXML
     private void handleEditAtleta() 
     {
-
+        Atleta selectedAtleta = atletiTable.getSelectionModel().getSelectedItem();
+        if (selectedAtleta != null) 
+        {
+            boolean okClicked = mainApp.showAtletaEditDialog(selectedAtleta);
+            if (okClicked) 
+            {
+                showAtletiDetails(selectedAtleta);
+            }
+        }else 
+        {
+            // Nulla selezionato.
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("Nessuna Selezione");
+            alert.setHeaderText("Nessun Atleta Selezionato");
+            alert.setContentText("Per favore seleziona un atleta nella tabella.");
+            alert.showAndWait();
+        }
     }
 }

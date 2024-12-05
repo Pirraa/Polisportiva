@@ -17,6 +17,8 @@ public class AttivitaController
     @FXML
     private TableColumn<AttivitaSportiva, String> descrizioneColumn;
     @FXML
+    private TableColumn<Atleta, Integer> idColumn;
+    @FXML
     private Label nomeLabel;
     @FXML
     private Label descrizioneLabel;
@@ -39,6 +41,8 @@ public class AttivitaController
         cellData.getValue().nomeProperty());
         descrizioneColumn.setCellValueFactory(cellData ->
         cellData.getValue().descrizioneProperty());
+        idColumn.setCellValueFactory(cellData ->
+        cellData.getValue().idProperty().asObject());
 
         /*se metto intero nelle celle devo convertire con asobject
          * myIntegerColumn.setCellValueFactory(cellData ->

@@ -1,6 +1,5 @@
 package lp.unife.it.controllers;
 
-
 import javafx.fxml.FXML;
 import lp.unife.it.MainApp;
 import javafx.scene.control.TableView;
@@ -12,58 +11,57 @@ public class IscrizioniController
 {
     private MainApp mainApp;
     @FXML
-    private TableView<Iscrizione> iscrizioniTable;
+    private TableView<Atleta> atletiTable;
     @FXML
-    private TableColumn<Iscrizione, String> atletaColumn;
+    private TableColumn<Atleta, String> nomeAtletaColumn;
     @FXML
-    private TableColumn<Iscrizione, String> attivitàColumn;
+    private TableColumn<Atleta, String> cognomeAtletaColumn;
     @FXML
-    private Label nomeLabel;
+    private TableColumn<Atleta, Integer> idAtletaColumn;
     @FXML
-    private Label descrizioneLabel;
+    private TableView<AttivitaSportiva> attivitaTable;
     @FXML
-    private Label cognomeLabel;
+    private TableColumn<AttivitaSportiva, String> nomeAttivitaColumn;
     @FXML
-    private Label nomeAttivitàLabel;
+    private TableColumn<AttivitaSportiva, String> descrizioneAttivitaColumn;
+    @FXML
+    private TableColumn<AttivitaSportiva, Integer> idAttivitaColumn;
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-        // Add observable list data to the table
-        iscrizioniTable.setItems(mainApp.polisportiva.getIscrizioni());
+        // Add observable list data to the tables
+        atletiTable.setItems(mainApp.polisportiva.getAtleti());
     }
 
     @FXML
     private void initialize() 
     {
-        // Initialize the iscrizioni table with the two columns.
-        atletaColumn.setCellValueFactory(cellData ->
-        cellData.getValue().getAtleta().nomeProperty());
-        attivitàColumn.setCellValueFactory(cellData ->
-        cellData.getValue().getAttivita().nomeProperty());
+        // Initialize the atleti table with the two columns.
+        nomeAtletaColumn.setCellValueFactory(cellData -> cellData.getValue().nomeProperty());
+        cognomeAtletaColumn.setCellValueFactory(cellData -> cellData.getValue().cognomeProperty());
+        idAtletaColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
 
-        // Clear iscrizione details.
-        showIscrizioneDetails(null);
-        // Listen for selection changes and show the iscrizione details when changed.
-        iscrizioniTable.getSelectionModel().selectedItemProperty().addListener(
-        (observable, oldValue, newValue) -> showIscrizioneDetails(newValue));
+        // Initialize the attivita table with the two columns.
+        nomeAttivitaColumn.setCellValueFactory(cellData -> cellData.getValue().nomeProperty());
+        descrizioneAttivitaColumn.setCellValueFactory(cellData -> cellData.getValue().descrizioneProperty());
+        idAttivitaColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
+
+        // Clear attivita details.
+        showAttivitaDetails(null);
+        // Listen for selection changes and show the attivita details when changed.
+        atletiTable.getSelectionModel().selectedItemProperty().addListener(
+        (observable, oldValue, newValue) -> showAttivitaDetails(newValue));
     }
 
-    public void showIscrizioneDetails(Iscrizione iscrizione) 
+    public void showAttivitaDetails(Atleta atleta) 
     {
-        if (iscrizione != null) 
+        if (atleta != null) 
         {
-            // Fill the labels with info from the iscrizione object.
-            nomeLabel.setText(iscrizione.getAtleta().getNome());
-            cognomeLabel.setText(iscrizione.getAtleta().getCognome());
-            nomeAttivitàLabel.setText(iscrizione.getAttivita().getNome());
-            descrizioneLabel.setText(iscrizione.getAttivita().getDescrizione());
+            // Fill the attivita table with activities from the atleta object.
+            attivitaTable.setItems(mainApp.polisportiva.getIscrizioniPerAtleta(atleta));
         } else {
-            // Iscrizione is null, remove all the text.
-            nomeLabel.setText("");
-            cognomeLabel.setText("");
-            nomeAttivitàLabel.setText("");
-            descrizioneLabel.setText("");
+            // Atleta is null, clear the attivita table.
+            attivitaTable.setItems(null);
         }
     }
-
 }

@@ -1,6 +1,7 @@
 package lp.unife.it.models;
 
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,19 +31,19 @@ public class Polisportiva {
         giorni.add(Giorno.LUNEDI);
         giorni.add(Giorno.SABATO);
 
-        AttivitaSportiva calcio = new AttivitaSportiva("Calcio", "Gioco di squadra", "18:00-20:00",giorni);
-        AttivitaSportiva nuoto = new AttivitaSportiva("Nuoto", "Attività in piscina", "10:00-12:00",giorni);
+        AttivitaSportiva calcio = new AttivitaSportiva(1,"Calcio", "Gioco di squadra", "18:00-20:00",giorni);
+        AttivitaSportiva nuoto = new AttivitaSportiva(2,"Nuoto", "Attività in piscina", "10:00-12:00",giorni);
 
         // Creazione di oggetti Atleta
-        Atleta atleta1 = new Atleta("Mario", "Rossi", "01/01/1990", "Via Roma 1", "1234567890", "mario.rossi@example.com");
+        Atleta atleta1 = new Atleta("Mario", "Rossi", LocalDate.of(1990, 1, 1), "Via Roma 1", "1234567890", "mario.rossi@example.com");
         atleta1.aggiungiAttivitaPreferita(calcio);
 
-        Atleta atleta2 = new Atleta("Luigi", "Verdi", "02/02/1985", "Via Milano 2", "0987654321", "luigi.verdi@example.com");
+        Atleta atleta2 = new Atleta("Luigi", "Verdi", LocalDate.of(1985, 2, 2), "Via Milano 2", "0987654321", "luigi.verdi@example.com");
         atleta2.aggiungiAttivitaPreferita(nuoto);
 
         // Creazione di oggetti Iscrizione
-        Iscrizione iscrizione1 = new Iscrizione(atleta1, calcio);
-        Iscrizione iscrizione2 = new Iscrizione(atleta2, nuoto);
+        Iscrizione iscrizione1 = new Iscrizione(2,atleta1, calcio);
+        Iscrizione iscrizione2 = new Iscrizione(2,atleta2, nuoto);
 
         // Aggiungi gli oggetti alle liste
         atleti.add(atleta1);
@@ -53,7 +54,17 @@ public class Polisportiva {
         iscrizioni.add(iscrizione2);
     }
 
-
+    public boolean eliminaAtletaById(int id) {
+        Atleta atletaToRemove = null;
+        for (Atleta atleta : atleti) {
+            if (atleta.getId() == id) {
+                atleti.remove(atleta);
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public void aggiungiAtleta(Atleta atleta) {
         atleti.add(atleta);
     }
@@ -88,15 +99,15 @@ public class Polisportiva {
         return attivita;
     }
 
-    public void iscriviAtleta(Atleta atleta, AttivitaSportiva attivitaSportiva) {
-        iscrizioni.add(new Iscrizione(atleta, attivitaSportiva));
+    public void iscriviAtleta(int id,Atleta atleta, AttivitaSportiva attivitaSportiva) {
+        iscrizioni.add(new Iscrizione(id,atleta, attivitaSportiva));
     }
 
-    public ObservableList<Iscrizione> getIscrizioniPerAtleta(Atleta atleta) {
-        ObservableList<Iscrizione> result = FXCollections.observableArrayList();
+    public ObservableList<AttivitaSportiva> getIscrizioniPerAtleta(Atleta atleta) {
+        ObservableList<AttivitaSportiva> result = FXCollections.observableArrayList();
         for (Iscrizione iscrizione : iscrizioni) {
             if (iscrizione.getAtleta().equals(atleta)) {
-                result.add(iscrizione);
+                result.add(iscrizione.getAttivita());
             }
         }
         return result;

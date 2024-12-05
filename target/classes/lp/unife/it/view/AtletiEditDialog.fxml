@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lp.unife.it.controllers.AtletiEditDialogController">
+   <children>
+      <GridPane layoutX="-3.0" layoutY="1.0" prefHeight="337.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="150.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="85.0" text="Nome" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="98.0" text="Data di nascita" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="86.0" text="Cognome" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="92.0" text="Indirizzo" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="43.0" prefWidth="94.0" text="Numero di telefono" GridPane.rowIndex="4" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="96.0" text="Email" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="96.0" text="Attività preferite" GridPane.rowIndex="6" />
+            <TextField fx:id="firstNameField" prefHeight="40.0" prefWidth="500.0" GridPane.columnIndex="1" />
+            <TextField fx:id="lastNameField" prefHeight="39.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="addressField" prefHeight="37.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="birthdayField" prefHeight="35.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="telephoneField" prefHeight="37.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="emailField" prefHeight="42.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ComboBox prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         </children>
+      </GridPane>
+      <Button layoutX="367.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="30.0" prefWidth="50.0" text="OK" />
+      <Button layoutX="448.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" prefWidth="100.0" text="CANCELLA" />
+   </children>
+</AnchorPane>

@@ -4,10 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lp.unife.it.models.Atleta;
 import lp.unife.it.models.AttivitaSportiva;
@@ -38,6 +40,8 @@ public class MainApp extends Application {
             showAttivita();
             showIscrizioni();
         }
+        primaryStage.setMinWidth(900);
+        primaryStage.setMinHeight(500);
     }
 
     public MainApp()
@@ -76,24 +80,6 @@ public class MainApp extends Application {
         // }
     }
 
-    /*private void showAtleti()
-    {
-        try 
-        {
-            // Load person overview.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/AtletiView.fxml"));
-            AnchorPane atletiView = (AnchorPane) loader.load();
-            // Set person overview into the center of root layout.
-            rootLayout.setRight(atletiView);
-
-            // Give the controller access to the main app.
-            AtletiController controller = loader.getController();
-            controller.setMainApp(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
     private void showAtleti() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -108,6 +94,11 @@ public class MainApp extends Application {
             // Aggiungi la view degli atleti al contenuto del tab
             atletiContent.getChildren().clear();
             atletiContent.getChildren().add(atletiView);
+            AnchorPane.setTopAnchor(atletiView, 0.0);
+            AnchorPane.setBottomAnchor(atletiView, 0.0);
+            AnchorPane.setLeftAnchor(atletiView, 0.0);
+            AnchorPane.setRightAnchor(atletiView, 0.0);
+
 
             // Dai accesso al controller alla main app
             AtletiController controller = loader.getController();
@@ -116,25 +107,6 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-
-    /*private void showAttivita()
-    {
-        try 
-        {
-            // Load person overview.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/AttivitaView.fxml"));
-            AnchorPane attivitàView = (AnchorPane) loader.load();
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(attivitàView);
-
-            // Give the controller access to the main app.
-            AttivitaController controller = loader.getController();
-            controller.setMainApp(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
 
     private void showAttivita() {
         try {
@@ -193,10 +165,6 @@ public class MainApp extends Application {
         launch();
     }
 
-    public boolean atletiEditDialog(Atleta atleta) 
-    {
-        return false;
-    }
 
     public boolean attivitàEditDialog(AttivitaSportiva attività) 
     {
@@ -208,19 +176,40 @@ public class MainApp extends Application {
         return false;
     }
 
-    public void loadFromFile(File file)
-    {
-
-    }
-
-    public void saveToFile(File file)
-    {
-
-    }
 
     public void showStatistics()
     {
         
+    }
+
+    public boolean showAtletaEditDialog(Atleta tempAtleta) 
+    {
+       try 
+        {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/AtletiEditDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Aggiungi atleta");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            AtletiEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setAtleta(tempAtleta);
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) 
+        {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }

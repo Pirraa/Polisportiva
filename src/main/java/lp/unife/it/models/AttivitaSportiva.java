@@ -1,22 +1,39 @@
 package lp.unife.it.models;
 
 import java.util.ArrayList;
+
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class AttivitaSportiva {
+    private IntegerProperty id;
     private StringProperty nome;
     private StringProperty descrizione;
     private StringProperty orari;
     private ObservableList<Giorno> giorni;
 
-    public AttivitaSportiva(String nome, String descrizione, String orari, ArrayList<Giorno> giorni) {
+    public AttivitaSportiva(int id,String nome, String descrizione, String orari, ArrayList<Giorno> giorni) {
+         this.id = new SimpleIntegerProperty(id);
         this.nome = new SimpleStringProperty(nome);
         this.descrizione = new SimpleStringProperty(descrizione);
         this.orari = new SimpleStringProperty(orari);
         this.giorni = FXCollections.observableArrayList(giorni);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
+    }
+
+    public int getId() {
+        return id.get();
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
     }
 
     // Getter e Setter per nome

@@ -4,16 +4,30 @@ import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Polisportiva {
     private ObservableList<Atleta> atleti = FXCollections.observableArrayList();
     private ObservableList<AttivitaSportiva> attivita = FXCollections.observableArrayList();
     private ObservableList<Iscrizione> iscrizioni = FXCollections.observableArrayList();
+
+    public void setAtleti(ObservableList<Atleta> atleti) {
+        this.atleti = atleti;
+    }
+
+    public void setAttivita(ObservableList<AttivitaSportiva> attivita) {
+        this.attivita = attivita;
+    }
+
+    public void setIscrizioni(ObservableList<Iscrizione> iscrizioni) {
+        this.iscrizioni = iscrizioni;
+    }
     public static Polisportiva instance;
 
     public static Polisportiva getInstance() {
@@ -23,6 +37,8 @@ public class Polisportiva {
         return instance;
     }
 
+
+
     public Polisportiva() {
         // Valori dummy per popolare le liste
         // Creazione di oggetti AttivitaSportiva
@@ -31,8 +47,21 @@ public class Polisportiva {
         giorni.add(Giorno.LUNEDI);
         giorni.add(Giorno.SABATO);
 
-        AttivitaSportiva calcio = new AttivitaSportiva(1,"Calcio", "Gioco di squadra", "18:00-20:00",giorni);
-        AttivitaSportiva nuoto = new AttivitaSportiva(2,"Nuoto", "Attività in piscina", "10:00-12:00",giorni);
+        // Crea la mappa degli orari per la prima attività sportiva
+        Map<Giorno, List<String>> orariPerGiorno1 = new HashMap<>();
+        orariPerGiorno1.put(Giorno.LUNEDI, Arrays.asList("09:00 - 10:00", "14:00 - 15:00"));
+        orariPerGiorno1.put(Giorno.MERCOLEDI, Arrays.asList("10:00 - 11:00"));
+
+        // Crea la prima attività sportiva
+        AttivitaSportiva calcio = new AttivitaSportiva("Calcio", "Allenamento di calcio", orariPerGiorno1);
+
+        // Crea la mappa degli orari per la seconda attività sportiva
+        Map<Giorno, List<String>> orariPerGiorno2 = new HashMap<>();
+        orariPerGiorno2.put(Giorno.MARTEDI, Arrays.asList("11:00 - 12:00", "16:00 - 17:00"));
+        orariPerGiorno2.put(Giorno.GIOVEDI, Arrays.asList("12:00 - 13:00"));
+
+        // Crea la seconda attività sportiva
+        AttivitaSportiva nuoto = new AttivitaSportiva("Nuoto", "Allenamento di nuoto", orariPerGiorno2);
 
         // Creazione di oggetti Atleta
         Atleta atleta1 = new Atleta("Mario", "Rossi", LocalDate.of(1990, 1, 1), "Via Roma 1", "1234567890", "mario.rossi@example.com");
@@ -112,6 +141,7 @@ public class Polisportiva {
         }
         return result;
     }
+
 
     public ObservableList<Iscrizione> getIscrizioni() {
         return iscrizioni;

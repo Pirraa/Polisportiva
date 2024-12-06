@@ -1,11 +1,16 @@
 package lp.unife.it.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import lp.unife.it.MainApp;
 import javafx.scene.control.TableView;
 import lp.unife.it.models.*;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 
 public class AttivitaController 
 {
@@ -26,6 +31,10 @@ public class AttivitaController
     private Label orariLabel;
     @FXML
     private Label giorniLabel;
+    @FXML
+    private ListView listGiorniOrari;
+
+     private ObservableList<String> giorniOrariList = FXCollections.observableArrayList();
     
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
@@ -54,6 +63,8 @@ public class AttivitaController
         //ogni volta che utente seleziona persona nella tabella la mostro 
         attivitaTable.getSelectionModel().selectedItemProperty().addListener(
         (observable, oldValue, newValue) -> showAttivitaDetails(newValue));
+
+        listGiorniOrari.setItems(giorniOrariList);
     }
 
     public void showAttivitaDetails(AttivitaSportiva attività) 
@@ -63,8 +74,14 @@ public class AttivitaController
             // Fill the labels with info from the atleta object.
             nomeLabel.setText(attività.getNome());
             descrizioneLabel.setText(attività.getDescrizione());
-            orariLabel.setText(attività.getOrari());
-            giorniLabel.setText(attività.getGiorni().toString());
+            orariLabel.setText(attività.getOrariPerGiorno().values().toString());
+            giorniLabel.setText(attività.getOrariPerGiorno().keySet().toString());
+            attività.getOrariPerGiorno().forEach((giorno, orari) -> {
+                for (String orario : orari) {
+                    String giornoOrario = giorno + ": " + orario;
+                    giorniOrariList.add(giornoOrario);
+                }
+            });
         } else {
             // Atleta is null, remove all the text.
             nomeLabel.setText("");
@@ -77,18 +94,56 @@ public class AttivitaController
     @FXML
     private void handleDeleteAttivita() 
     {
-
+        int selectedIndex = attivitaTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            attivitaTable.getItems().remove(selectedIndex);
+            System.out.println(mainApp.polisportiva.getAttivita());
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("Nessuna Selezione");
+            alert.setHeaderText("Nessuna Attività Selezionata");
+            alert.setContentText("Per favore seleziona un'attività nella tabella.");
+            alert.showAndWait();
+        }
     }
 
     @FXML
     private void handleNewAttivita() 
     {
-
+        AttivitaSportiva tempAttivita = new AttivitaSportiva();
+        boolean okClicked = mainApp.showAttivitaEditDialog(tempAttivita);
+        if (okClicked) 
+        {
+            mainApp.polisportiva.getAttivita().add(tempAttivita);
+        }
     }
 
     @FXML
     private void handleEditAttivita() 
     {
+        AttivitaSportiva selectedAttivita = attivitaTable.getSelectionModel().getSelectedItem();
+        if (selectedAttivita != null) 
+        {
+            boolean okClicked = mainApp.showAttivitaEditDialog(selectedAttivita);
+            if (okClicked) 
+            {
+                showAttivitaDetails(selectedAttivita);
+            }
+        } else 
+        {
+            // Nulla selezionato.
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("Nessuna Selezione");
+            alert.setHeaderText("Nessuna Attività Selezionata");
+            alert.setContentText("Per favore seleziona un'attività nella tabella.");
+            alert.showAndWait();
+        }
+    }
 
+    public void setAttivitaData(ObservableList<AttivitaSportiva> attivitaData) {
+        attivitaTable.setItems(attivitaData);
     }
 }

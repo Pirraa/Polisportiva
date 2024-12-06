@@ -8,13 +8,17 @@
 ☐ inserimento attività preferite con combobox
 ☐ inserimenti attivita
 ☐ inserimenti iscrizione
+☐ sistema view attivtà con lista ore collegata a giorni
+☐ sistema controllo inserimento attività senza giorni e ore (lo fa lo stesso)
 ☐ modifica atleta
 ☐ modifica attivtà preferite con combobox
 ☐ modifica attivita
 ☐ modifica iscrizione
 ☐ elimina atleta
+☐ se elimino atleta elimino anche iscrizioni collegate
 ☐ elimina attivita
-☐ iscrizione
+☐ se elimino attività elimino anche iscrizioni collegate
+☐ elimina iscrizione
 ☐ fare salva e salva con nome atleta
 ☐ fare salva e salva con nome attivita
 ☐ fare salva e salva con nome iscrizione

@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javafx.beans.property.StringProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.IntegerProperty;
@@ -33,6 +36,25 @@ public class Atleta {
         this.attivitaPreferite = new ArrayList<>();
     }
 
+    @JsonCreator
+    public Atleta(@JsonProperty("id") int id, 
+                  @JsonProperty("nome") String nome, 
+                  @JsonProperty("cognome") String cognome, 
+                  @JsonProperty("dataNascita") LocalDate dataNascita, 
+                  @JsonProperty("indirizzo") String indirizzo, 
+                  @JsonProperty("telefono") String telefono, 
+                  @JsonProperty("email") String email, 
+                  @JsonProperty("attivitaPreferite") List<AttivitaSportiva> attivitaPreferite) {
+        this.id = new SimpleIntegerProperty(id);
+        this.nome = new SimpleStringProperty(nome);
+        this.cognome = new SimpleStringProperty(cognome);
+        this.dataNascita = new SimpleObjectProperty<>(dataNascita);
+        this.indirizzo = new SimpleStringProperty(indirizzo);
+        this.telefono = new SimpleStringProperty(telefono);
+        this.email = new SimpleStringProperty(email);
+        this.attivitaPreferite = attivitaPreferite != null ? attivitaPreferite : new ArrayList<>();
+    }
+
     public Atleta() {
         this(null, null, null, null, null, null);
     }
@@ -41,10 +63,12 @@ public class Atleta {
         return id;
     }
 
+    @JsonProperty("id")
     public int getId() {
         return id.get();
     }
 
+    @JsonProperty("id")
     public void setId() {
         id.set(++lastId);
     }

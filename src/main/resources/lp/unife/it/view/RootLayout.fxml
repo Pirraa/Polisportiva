@@ -14,13 +14,13 @@
         <menus>
           <Menu mnemonicParsing="false" text="Atleti">
             <items>
-              <MenuItem mnemonicParsing="false" text="Elimina" />
-                  <MenuItem mnemonicParsing="false" text="Apri" />
-                  <MenuItem mnemonicParsing="false" text="Salva" />
-                  <MenuItem mnemonicParsing="false" text="Salva con nome" />
+              <MenuItem mnemonicParsing="false" text="Elimina" onAction="#handleNewAtleti"/>
+                  <MenuItem mnemonicParsing="false" text="Apri" onAction="#handleOpenAtleti"/>
+                  <MenuItem mnemonicParsing="false" text="Salva" onAction="#handleSaveAtleti"/>
+                  <MenuItem mnemonicParsing="false" text="Salva con nome" onAction="#handleSaveAsAtleti"/>
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Attività">
+            <Menu mnemonicParsing="false" text="Attività" onAction="#handleNewAttivita">
                <items>
                   <MenuItem mnemonicParsing="false" text="Elimina" />
                   <MenuItem mnemonicParsing="false" text="Apri" />
@@ -29,7 +29,7 @@
                   <MenuItem mnemonicParsing="false" text="Esci" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Iscrizioni">
+            <Menu mnemonicParsing="false" text="Iscrizioni" onAction="#handleNewIscrizioni">
                <items>
                   <MenuItem mnemonicParsing="false" text="Nuovo" />
                   <MenuItem mnemonicParsing="false" text="Apri" />

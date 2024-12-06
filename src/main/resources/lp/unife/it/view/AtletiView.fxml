@@ -19,7 +19,7 @@
                <children>
                   <TableView fx:id="atletiTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                    <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID"  />
+                    <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
                       <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="Nome" />
                       <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Cognome" />
                     </columns>
@@ -35,7 +35,7 @@
                   <GridPane layoutX="14.0" layoutY="32.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -62,9 +62,9 @@
                         <Label fx:id="emailLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <ButtonBar prefHeight="30.0" prefWidth="340.0" GridPane.rowIndex="7">
                           <buttons>
-                              <Button mnemonicParsing="false" text="Aggiungi"  onAction="#handleNewAtleta"/>
-                              <Button mnemonicParsing="false" text="Modifica" onAction="#handleEditAtleta" />
-                              <Button mnemonicParsing="false" text="Elimina" onAction="#handleDeleteAtleta"/>
+                              <Button mnemonicParsing="false" onAction="#handleNewAtleta" text="Aggiungi" />
+                              <Button mnemonicParsing="false" onAction="#handleEditAtleta" text="Modifica" />
+                              <Button mnemonicParsing="false" onAction="#handleDeleteAtleta" text="Elimina" />
                           </buttons>
                         </ButtonBar>
                      </children>

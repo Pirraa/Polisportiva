@@ -1,6 +1,9 @@
 package lp.unife.it.models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -8,20 +11,25 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 
 public class AttivitaSportiva {
+    private static int lastId = 0;
     private IntegerProperty id;
     private StringProperty nome;
     private StringProperty descrizione;
-    private StringProperty orari;
-    private ObservableList<Giorno> giorni;
+    private ObservableMap<Giorno, ObservableList<String>> orariPerGiorno;
 
-    public AttivitaSportiva(int id,String nome, String descrizione, String orari, ArrayList<Giorno> giorni) {
-         this.id = new SimpleIntegerProperty(id);
+    public AttivitaSportiva(String nome, String descrizione, Map<Giorno, List<String>> orariPerGiorno) {
+        this.id = new SimpleIntegerProperty(++lastId); 
         this.nome = new SimpleStringProperty(nome);
         this.descrizione = new SimpleStringProperty(descrizione);
-        this.orari = new SimpleStringProperty(orari);
-        this.giorni = FXCollections.observableArrayList(giorni);
+        this.orariPerGiorno = FXCollections.observableHashMap();
+        orariPerGiorno.forEach((giorno, orari) -> this.orariPerGiorno.put(giorno, FXCollections.observableArrayList(orari)));
+    }
+
+    public AttivitaSportiva() {
+        this( "", "", new HashMap<>());
     }
 
     public IntegerProperty idProperty() {
@@ -62,26 +70,14 @@ public class AttivitaSportiva {
         return descrizione;
     }
 
-    // Getter e Setter per orari
-    public String getOrari() {
-        return orari.get();
+    // Getter e Setter per orariPerGiorno
+    public ObservableMap<Giorno, ObservableList<String>> getOrariPerGiorno() {
+        return orariPerGiorno;
     }
 
-    public void setOrari(String orari) {
-        this.orari.set(orari);
-    }
-
-    public StringProperty orariProperty() {
-        return orari;
-    }
-
-    // Getter e Setter per giorni
-    public ObservableList<Giorno> getGiorni() {
-        return giorni;
-    }
-
-    public void setGiorni(ArrayList<Giorno> giorni) {
-        this.giorni.setAll(giorni);
+    public void setOrariPerGiorno(Map<Giorno, List<String>> orariPerGiorno) {
+        this.orariPerGiorno.clear();
+        orariPerGiorno.forEach((giorno, orari) -> this.orariPerGiorno.put(giorno, FXCollections.observableArrayList(orari)));
     }
 
     @Override
@@ -89,8 +85,8 @@ public class AttivitaSportiva {
         return "AttivitaSportiva{" +
                 "nome=" + nome.get() +
                 ", descrizione=" + descrizione.get() +
-                ", orari=" + orari.get() +
-                ", giorni=" + giorni +
+                ", orariPerGiorno=" + orariPerGiorno +
                 '}';
     }
-}
+    }
+

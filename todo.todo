@@ -1,31 +1,31 @@
 ☐ sistemare nomi delle label, intestazioni e menu tutto in italiano
 ☐ sistemare ridimensionamento della tabella
-☐ sistemare visualizzazione compleanno su atleti
-☐ sistemare visualizzazione su iscrizioni con tutti i dati atleta e attivita
-☐ sistemare visualizzazione iscrizioni in modo che ci sia lista di atleti e cliccando su uno escano le attività a cui è iscritto
-☐ aggiungere id alle classi
-☐ inserimenti atleta
+✔ sistemare visualizzazione compleanno su atleti @done (06/12/2024, 19:35:38)
+✔ sistemare visualizzazione su iscrizioni con tutti i dati atleta e attivita @done (06/12/2024, 19:35:46)
+✔ sistemare visualizzazione iscrizioni in modo che ci sia lista di atleti e cliccando su uno escano le attività a cui è iscritto @done (06/12/2024, 19:35:51)
+✔ aggiungere id alle classi @done (06/12/2024, 19:35:51)
+✔ inserimenti atleta @done (06/12/2024, 19:35:54)
+☐ sistema visualizzaizone attività con listview che non si aggiorna (ma le label si però sono grulle)
 ☐ inserimento attività preferite con combobox
-☐ inserimenti attivita
+✔ inserimenti attivita @done (06/12/2024, 19:36:01)
 ☐ inserimenti iscrizione
-☐ sistema view attivtà con lista ore collegata a giorni
 ☐ sistema controllo inserimento attività senza giorni e ore (lo fa lo stesso)
-☐ modifica atleta
+✔ modifica atleta @done (06/12/2024, 19:36:48)
 ☐ modifica attivtà preferite con combobox
-☐ modifica attivita
+✔ modifica attivita @done (06/12/2024, 19:37:01)
 ☐ modifica iscrizione
-☐ elimina atleta
+✔ elimina atleta @done (06/12/2024, 19:37:05)
 ☐ se elimino atleta elimino anche iscrizioni collegate
-☐ elimina attivita
+✔ elimina attivita @done (06/12/2024, 19:37:07)
 ☐ se elimino attività elimino anche iscrizioni collegate
 ☐ elimina iscrizione
-☐ fare salva e salva con nome atleta
+✔ fare salva e salva con nome atleta @done (06/12/2024, 19:37:09)
 ☐ fare salva e salva con nome attivita
 ☐ fare salva e salva con nome iscrizione
-☐ fare pulisci atleta iscrizione
-☐ fare pulisci attivita
-☐ fare pulisci iscrizione
-☐ fare exit e pop up about dal menu
+✔ fare pulisci atleta iscrizione @done (06/12/2024, 19:37:17)
+✔ fare pulisci attivita @done (06/12/2024, 19:37:19)
+✔ fare pulisci iscrizione @done (06/12/2024, 19:37:19)
+✔ fare exit e pop up about dal menu @done (06/12/2024, 19:37:21)
 ☐ fare modale con statistiche con grafico dal menu
 ☐ modifica colori
 ☐ sistema la grafica

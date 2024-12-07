@@ -74,8 +74,10 @@ public class AttivitaController
             // Fill the labels with info from the atleta object.
             nomeLabel.setText(attività.getNome());
             descrizioneLabel.setText(attività.getDescrizione());
-            orariLabel.setText(attività.getOrariPerGiorno().values().toString());
-            giorniLabel.setText(attività.getOrariPerGiorno().keySet().toString());
+            //orariLabel.setText(attività.getOrariPerGiorno().values().toString());
+            //giorniLabel.setText(attività.getOrariPerGiorno().keySet().toString());
+            // Clear the existing items in the list
+            giorniOrariList.clear();
             attività.getOrariPerGiorno().forEach((giorno, orari) -> {
                 for (String orario : orari) {
                     String giornoOrario = giorno + ": " + orario;
@@ -96,6 +98,10 @@ public class AttivitaController
     {
         int selectedIndex = attivitaTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
+            AttivitaSportiva selectedAttivita = attivitaTable.getItems().get(selectedIndex);
+
+            ObservableList<Iscrizione> iscrizioni = mainApp.polisportiva.getIscrizioniPerAttivita(selectedAttivita);
+            mainApp.polisportiva.getIscrizioni().removeAll(iscrizioni);
             attivitaTable.getItems().remove(selectedIndex);
             System.out.println(mainApp.polisportiva.getAttivita());
         } else {

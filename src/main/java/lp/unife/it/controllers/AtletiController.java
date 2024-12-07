@@ -1,6 +1,8 @@
 package lp.unife.it.controllers;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import lp.unife.it.DateUtil;
 import lp.unife.it.MainApp;
@@ -10,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 
 public class AtletiController 
 {
@@ -34,6 +37,10 @@ public class AtletiController
     private Label emailLabel;
     @FXML
     private Label birthdayLabel;
+    @FXML
+    private ListView<String> attivitaPreferiteListView;
+
+    private ObservableList<String> attivitaPreferiteList = FXCollections.observableArrayList();
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
@@ -62,12 +69,15 @@ public class AtletiController
         //ogni volta che utente seleziona persona nella tabella la mostro 
         atletiTable.getSelectionModel().selectedItemProperty().addListener(
         (observable, oldValue, newValue) -> showAtletiDetails(newValue));
+
+        attivitaPreferiteListView.setItems(attivitaPreferiteList);
     }
 
     public void showAtletiDetails(Atleta atleta) 
     {
         if (atleta != null) 
         {
+            System.out.println(mainApp.polisportiva.getIscrizioniPerAtleta(atleta));
             // Fill the labels with info from the atleta object.
             firstNameLabel.setText(atleta.getNome());
             lastNameLabel.setText(atleta.getCognome());
@@ -75,6 +85,14 @@ public class AtletiController
             telephoneLabel.setText(atleta.getTelefono());
             emailLabel.setText(atleta.getEmail());
             birthdayLabel.setText(DateUtil.format(atleta.getDataNascita()));
+
+            // Clear the existing items in the list
+            attivitaPreferiteList.clear();
+
+            // Add new items to the list
+            for (AttivitaSportiva attivita : atleta.getAttivitaPreferite()) {
+                attivitaPreferiteList.add(attivita.getNome()+" "+attivita.getDescrizione());
+            }
         } else {
             // Atleta is null, remove all the text.
             firstNameLabel.setText("");
@@ -91,7 +109,15 @@ public class AtletiController
     {
         int selectedIndex = atletiTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
+            Atleta atletaSelezionato = atletiTable.getItems().get(selectedIndex);
+    
+            // Rimuovi le iscrizioni collegate all'atleta
+            ObservableList<Iscrizione> iscrizioniAtleta = mainApp.polisportiva.getIscrizioniPerAtleta(atletaSelezionato);
+            mainApp.polisportiva.getIscrizioni().removeAll(iscrizioniAtleta);
+    
+            // Rimuovi l'atleta dalla tabella
             atletiTable.getItems().remove(selectedIndex);
+    
             System.out.println(mainApp.polisportiva.getAtleti());
         } 
         else

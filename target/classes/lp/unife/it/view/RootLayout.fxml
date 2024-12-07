@@ -20,18 +20,17 @@
                   <MenuItem mnemonicParsing="false" text="Salva con nome" onAction="#handleSaveAsAtleti"/>
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Attività" onAction="#handleNewAttivita">
+            <Menu mnemonicParsing="false" text="Attività" >
                <items>
-                  <MenuItem mnemonicParsing="false" text="Elimina" />
-                  <MenuItem mnemonicParsing="false" text="Apri" />
-                  <MenuItem mnemonicParsing="false" text="Salva" />
-                  <MenuItem mnemonicParsing="false" text="Salva con nome" />
-                  <MenuItem mnemonicParsing="false" text="Esci" />
+                  <MenuItem mnemonicParsing="false" text="Elimina" onAction="#handleNewAttivita"/>
+                  <MenuItem mnemonicParsing="false" text="Apri" onAction="#handleOpenAttivita"/>
+                  <MenuItem mnemonicParsing="false" text="Salva" onAction="#handleSaveAttivita"/>
+                  <MenuItem mnemonicParsing="false" text="Salva con nome" onAction="#handleSaveAsAttivita"/>
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Iscrizioni" onAction="#handleNewIscrizioni">
+            <Menu mnemonicParsing="false" text="Iscrizioni" >
                <items>
-                  <MenuItem mnemonicParsing="false" text="Nuovo" />
+                  <MenuItem mnemonicParsing="false" text="Nuovo" onAction="#handleNewIscrizioni"/>
                   <MenuItem mnemonicParsing="false" text="Apri" />
                   <MenuItem mnemonicParsing="false" text="Salva" />
                   <MenuItem mnemonicParsing="false" text="Salva con nome" />
@@ -44,12 +43,12 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Informazioni">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" text="About" onAction="#handleAbout"/>
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Esci">
                <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" text="Esci" onAction="#handleExit"/>
                </items>
             </Menu>
         </menus>

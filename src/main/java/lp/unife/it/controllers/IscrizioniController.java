@@ -58,7 +58,7 @@ public class IscrizioniController
         if (atleta != null) 
         {
             // Fill the attivita table with activities from the atleta object.
-            attivitaTable.setItems(mainApp.polisportiva.getIscrizioniPerAtleta(atleta));
+            attivitaTable.setItems(mainApp.polisportiva.getAttivitaPerAtleta(atleta));
         } else {
             // Atleta is null, clear the attivita table.
             attivitaTable.setItems(null);

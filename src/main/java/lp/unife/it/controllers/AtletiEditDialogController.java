@@ -1,12 +1,20 @@
 package lp.unife.it.controllers;
 
+import java.util.ArrayList;
+
+import org.controlsfx.control.CheckComboBox;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lp.unife.it.DateUtil;
 import lp.unife.it.models.Atleta;
+import lp.unife.it.models.AttivitaSportiva;
 
 public class AtletiEditDialogController 
 {
@@ -22,13 +30,19 @@ public class AtletiEditDialogController
     private TextField telephoneField;
     @FXML
     private TextField birthdayField;
+    @FXML
+    private CheckComboBox<AttivitaSportiva> comboAttivitaPreferite;
+
 
     private Stage dialogStage;
     private Atleta atleta;
     private boolean okClicked = false;
 
+    private ObservableList<AttivitaSportiva> attivitaData = FXCollections.observableArrayList();
+
     @FXML
     private void initialize() {
+       
     }
 
     public void setDialogStage(Stage dialogStage) 
@@ -46,6 +60,14 @@ public class AtletiEditDialogController
         telephoneField.setText(atleta.getTelefono());
         birthdayField.setText(DateUtil.format(atleta.getDataNascita()));
         birthdayField.setPromptText("dd.mm.yyyy");
+
+        // Populate the CheckComboBox with available activities
+        comboAttivitaPreferite.getItems().setAll(attivitaData);
+
+        // Select the athlete's preferred activities in the CheckComboBox
+        for (AttivitaSportiva attivita : atleta.getAttivitaPreferite()) {
+            comboAttivitaPreferite.getCheckModel().check(attivita);
+        }
     }
 
     public boolean isOkClicked() 
@@ -64,6 +86,10 @@ public class AtletiEditDialogController
             atleta.setEmail(emailField.getText());
             atleta.setTelefono(telephoneField.getText());
             atleta.setDataNascita(DateUtil.parse(birthdayField.getText()));
+
+            // Update the athlete's preferred activities
+            ObservableList<AttivitaSportiva> selectedAttivita = comboAttivitaPreferite.getCheckModel().getCheckedItems();
+            atleta.setAttivitaPreferite(new ArrayList<>(selectedAttivita));
             okClicked = true;
             dialogStage.close();
         }
@@ -112,6 +138,18 @@ public class AtletiEditDialogController
             alert.setContentText(errorMessage.toString());
             alert.showAndWait();
             return false;
+        }
+    }
+
+    public void setAttivitaData(ObservableList<AttivitaSportiva> attivitaData) {
+        this.attivitaData = attivitaData;
+         // Initialize the CheckComboBox
+         comboAttivitaPreferite.getItems().addAll(attivitaData);
+         // Select the athlete's preferred activities in the CheckComboBox
+        if (atleta != null) {
+            for (AttivitaSportiva attivita : atleta.getAttivitaPreferite()) {
+                comboAttivitaPreferite.getCheckModel().check(attivita);
+            }
         }
     }
 }

@@ -238,6 +238,7 @@ public class MainApp extends Application {
             // Set the person into the controller.
             AtletiEditDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
+            controller.setAttivitaData(polisportiva.getAttivita());
             controller.setAtleta(tempAtleta);
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
@@ -257,7 +258,7 @@ public class MainApp extends Application {
             mapper.registerModule(new JavaTimeModule());
             mapper.writeValue(file, polisportiva.getAtleti());
             // Save the file path to the registry.
-            setFilePath(file);
+            setFilePathAtleti(file);
         } catch (Exception e) { // catches ANY exception
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
@@ -267,10 +268,10 @@ public class MainApp extends Application {
         }
     }
 
-    public File getFilePath() 
+    public File getFilePathAtleti() 
     {
         Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
-        String filePath = prefs.get("filePath", null);
+        String filePath = prefs.get("atleti", null);
         if (filePath != null) {
             return new File(filePath);
         } else {
@@ -278,17 +279,42 @@ public class MainApp extends Application {
         }
     }
 
-    public void setFilePath(File file)
+    public void setFilePathAtleti(File file)
     {
         Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
         if (file != null) {
-            prefs.put("filePath", file.getPath());
+            prefs.put("atleti", file.getPath());
             // Update the stage title.
-            primaryStage.setTitle("AddressApp - " + file.getName());
+            primaryStage.setTitle("Atleti - " + file.getName());
         } else {
-            prefs.remove("filePath");
+            prefs.remove("atleti");
             // Update the stage title.
-            primaryStage.setTitle("AddressApp");
+            primaryStage.setTitle("Polisportiva");
+        }
+    }
+
+    public File getFilePathAttivita() 
+    {
+        Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+        String filePath = prefs.get("attività", null);
+        if (filePath != null) {
+            return new File(filePath);
+        } else {
+            return null;
+        }
+    }
+
+    public void setFilePathAttivita(File file)
+    {
+        Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+        if (file != null) {
+            prefs.put("attività", file.getPath());
+            // Update the stage title.
+            primaryStage.setTitle("Attività - " + file.getName());
+        } else {
+            prefs.remove("attività");
+            // Update the stage title.
+            primaryStage.setTitle("Polisportiva");
         }
     }
 
@@ -299,9 +325,8 @@ public class MainApp extends Application {
              // Registra il modulo per supportare java.time.LocalDate
             mapper.registerModule(new JavaTimeModule());
             //leggo lista di persone dal file poi la trasformo in observable list
-            System.out.println("sto loaddando");
             polisportiva.setAtleti(FXCollections.observableArrayList( mapper.readValue(file, new TypeReference<List<Atleta>>() { })));
-            setFilePath(file);
+            setFilePathAtleti(file);
             showAtleti();
         } catch (Exception e) { // catches ANY exception
             System.out.println(e.getMessage());
@@ -311,6 +336,45 @@ public class MainApp extends Application {
             alert.setContentText("Could not load data from file:\n" + file.getPath());
             alert.showAndWait();
         }
+    }
+
+    public void loadAttivitaDataFromFile(File file) 
+    {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            // Registra il modulo per supportare java.time.LocalDate
+            mapper.registerModule(new JavaTimeModule());
+            // Leggo lista di attività dal file poi la trasformo in observable list
+            polisportiva.setAttivita(FXCollections.observableArrayList(mapper.readValue(file, new TypeReference<List<AttivitaSportiva>>() {})));
+            setFilePathAttivita(file);
+            showAttivita();
+        } catch (Exception e) { // catches ANY exception
+            System.out.println(e.getMessage());
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Could not load data");
+            alert.setContentText("Could not load data from file:\n" + file.getPath());
+            alert.showAndWait();
+        }
+    }
+
+    public void saveAttivitaDataToFile(File attivitaFile) 
+    {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+            mapper.registerModule(new JavaTimeModule());
+            mapper.writeValue(attivitaFile, polisportiva.getAttivita());
+            // Save the file path to the registry.
+            setFilePathAttivita(attivitaFile);
+        } catch (Exception e) { // catches ANY exception
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Could not save data");
+            alert.setContentText("Could not save data to file:\n" + attivitaFile.getPath());
+            alert.showAndWait();
+        }
+       
     }
 
 }

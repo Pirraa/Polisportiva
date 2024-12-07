@@ -132,11 +132,31 @@ public class Polisportiva {
         iscrizioni.add(new Iscrizione(id,atleta, attivitaSportiva));
     }
 
-    public ObservableList<AttivitaSportiva> getIscrizioniPerAtleta(Atleta atleta) {
+    public ObservableList<AttivitaSportiva> getAttivitaPerAtleta(Atleta atleta) {
         ObservableList<AttivitaSportiva> result = FXCollections.observableArrayList();
         for (Iscrizione iscrizione : iscrizioni) {
             if (iscrizione.getAtleta().equals(atleta)) {
                 result.add(iscrizione.getAttivita());
+            }
+        }
+        return result;
+    }
+
+    public ObservableList<Iscrizione> getIscrizioniPerAtleta(Atleta atleta) {
+        ObservableList<Iscrizione> result = FXCollections.observableArrayList();
+        for (Iscrizione iscrizione : iscrizioni) {
+            if (iscrizione.getAtleta().equals(atleta)) {
+                result.add(iscrizione);
+            }
+        }
+        return result;
+    }
+
+    public ObservableList<Iscrizione> getIscrizioniPerAttivita(AttivitaSportiva attivitaSportiva) {
+        ObservableList<Iscrizione> result = FXCollections.observableArrayList();
+        for (Iscrizione iscrizione : iscrizioni) {
+            if (iscrizione.getAttivita().equals(attivitaSportiva)) {
+                result.add(iscrizione);
             }
         }
         return result;

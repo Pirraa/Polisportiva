@@ -5,6 +5,7 @@ module lp.unife.it {
     requires java.prefs;
     requires com.fasterxml.jackson.datatype.jsr310;
     requires com.fasterxml.jackson.databind;
+    requires org.controlsfx.controls;
     requires java.base;
 
     opens lp.unife.it to javafx.fxml;

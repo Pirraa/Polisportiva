@@ -14,7 +14,11 @@ public class Iscrizione {
         this.attivita = attivita;
     }
 
-     public IntegerProperty idProperty() {
+     public Iscrizione() {
+        this(0, null, null);
+    }
+
+    public IntegerProperty idProperty() {
         return id;
     }
 

@@ -167,6 +167,21 @@ public class Polisportiva {
         return iscrizioni;
     }
 
+    public boolean rimuoviIscrizione(Atleta atleta, AttivitaSportiva attivitaSportiva) {
+        Iscrizione iscrizioneToRemove = null;
+        for (Iscrizione iscrizione : iscrizioni) {
+            if (iscrizione.getAtleta().equals(atleta) && iscrizione.getAttivita().equals(attivitaSportiva)) {
+                iscrizioneToRemove = iscrizione;
+                break;
+            }
+        }
+        if (iscrizioneToRemove != null) {
+            iscrizioni.remove(iscrizioneToRemove);
+            return true;
+        }
+        return false;
+    }
+
     // Metodi per gestire statistiche
     public int numeroAtletiIscrittiPerAttivita(AttivitaSportiva attivitaSportiva) {
         int count = 0;

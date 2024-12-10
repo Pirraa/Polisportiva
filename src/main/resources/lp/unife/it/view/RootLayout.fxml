@@ -38,7 +38,7 @@
             </Menu>
           <Menu mnemonicParsing="false" text="Statistiche">
             <items>
-              <MenuItem mnemonicParsing="false" text="Mostra statistiche" />
+              <MenuItem mnemonicParsing="false" text="Mostra statistiche" onAction="#handleshowStatistiche"/>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Informazioni">

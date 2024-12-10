@@ -18,7 +18,7 @@
                     <columns>
                       <TableColumn fx:id="idAtletaColumn" prefWidth="75.0" text="ID" visible="false" />
                       <TableColumn fx:id="nomeAtletaColumn" prefWidth="75.0" text="Atleta" />
-                      <TableColumn fx:id="cognomeAtletaColumn" prefWidth="75.0" text="Attività" />
+                      <TableColumn fx:id="cognomeAtletaColumn" prefWidth="75.0" text="Cognome atleta" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -28,7 +28,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="Dettagli iscrizione" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                  <Label layoutX="14.0" layoutY="14.0" text="Dettagli iscrizioni" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
                   <TableView fx:id="attivitaTable" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" AnchorPane.bottomAnchor="60.0">
                     <columns>
                       <TableColumn fx:id="idAttivitaColumn" prefWidth="75.0" text="ID" visible="false" />
@@ -38,9 +38,8 @@
                   </TableView>
                   <ButtonBar layoutX="148.0" layoutY="244.0" prefHeight="49.0" prefWidth="264.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
                     <buttons>
-                      <Button mnemonicParsing="false" text="Aggiungi" />
-                      <Button mnemonicParsing="false" text="Modifica" />
-                      <Button mnemonicParsing="false" text="Elimina" />
+                      <Button mnemonicParsing="false" text="Aggiungi" onAction="#handleNewIscrizione"/>
+                      <Button mnemonicParsing="false" text="Elimina" onAction="#handleDeleteIscrizione"/>
                     </buttons>
                   </ButtonBar>
                </children>

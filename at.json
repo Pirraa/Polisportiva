@@ -1,0 +1,17 @@
+[ {
+  "id" : 1,
+  "nome" : "Calcio",
+  "descrizione" : "Allenamento di calcio",
+  "orariPerGiorno" : {
+    "MERCOLEDI" : [ "10:00 - 11:00" ],
+    "LUNEDI" : [ "09:00 - 10:00", "14:00 - 15:00" ]
+  }
+}, {
+  "id" : 2,
+  "nome" : "Nuoto",
+  "descrizione" : "Allenamento di nuoto",
+  "orariPerGiorno" : {
+    "GIOVEDI" : [ "12:00 - 13:00" ],
+    "MARTEDI" : [ "11:00 - 12:00", "16:00 - 17:00" ]
+  }
+} ]

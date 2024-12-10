@@ -51,8 +51,8 @@ public class MainApp extends Application {
             showAttivita();
             showIscrizioni();
         }
-        primaryStage.setMinWidth(1000);
-        primaryStage.setMinHeight(500);
+        primaryStage.setMinWidth(1380);
+        primaryStage.setMinHeight(800);
     }
 
     public MainApp()
@@ -134,6 +134,11 @@ public class MainApp extends Application {
             attivitaContent.getChildren().clear();
             attivitaContent.getChildren().add(attivitaView);
 
+            AnchorPane.setTopAnchor(attivitaView, 0.0);
+            AnchorPane.setBottomAnchor(attivitaView, 0.0);
+            AnchorPane.setLeftAnchor(attivitaView, 0.0);
+            AnchorPane.setRightAnchor(attivitaView, 0.0);
+
             // Dai accesso al controller alla main app
             AttivitaController controller = loader.getController();
             controller.setMainApp(this);
@@ -158,6 +163,11 @@ public class MainApp extends Application {
             // Aggiungi la view delle attività al contenuto del tab
             iscrizioniContent.getChildren().clear();
             iscrizioniContent.getChildren().add(iscrizioniView);
+
+            AnchorPane.setTopAnchor(iscrizioniView, 0.0);
+            AnchorPane.setBottomAnchor(iscrizioniView, 0.0);
+            AnchorPane.setLeftAnchor(iscrizioniView, 0.0);
+            AnchorPane.setRightAnchor(iscrizioniView, 0.0);
 
             // Dai accesso al controller alla main app
             IscrizioniController controller = loader.getController();
@@ -208,9 +218,35 @@ public class MainApp extends Application {
         }
     }
 
-    public boolean IscrizioniEditDialog(Iscrizione iscrizione) 
+    public boolean showIscrizioniEditDialog(Iscrizione tempIscrizione) 
     {
-        return false;
+        try 
+        {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/IscrizioniEditDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Aggiungi iscrizione");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            IscrizioniEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setData(polisportiva.getAttivita(),polisportiva.getAtleti(),polisportiva.getIscrizioni());
+            controller.setIscrizione(tempIscrizione);
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) 
+        {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 
@@ -375,6 +411,31 @@ public class MainApp extends Application {
             alert.showAndWait();
         }
        
+    }
+
+    public void showStatistiche() 
+    {
+        try 
+        {
+            // Load the fxml file and create a new stage for the popup.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/Statistiche.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Statistiche atleti per attività");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            // Set the persons into the controller.
+            StatisticheController controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setData(polisportiva.getAtleti(), polisportiva.getAttivita(), polisportiva.getIscrizioni());
+            dialogStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
     }
 
 }

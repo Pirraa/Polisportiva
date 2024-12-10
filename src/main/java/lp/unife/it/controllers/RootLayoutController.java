@@ -177,4 +177,10 @@ public class RootLayoutController {
     {
         System.exit(0);
     }
+
+    @FXML
+    private void handleshowStatistiche() 
+    {
+        mainApp.showStatistiche();
+    }
 }

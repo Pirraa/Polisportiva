@@ -1,10 +1,13 @@
 package lp.unife.it.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import lp.unife.it.MainApp;
 import javafx.scene.control.TableView;
 import lp.unife.it.models.*;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 
 public class IscrizioniController 
@@ -63,5 +66,49 @@ public class IscrizioniController
             // Atleta is null, clear the attivita table.
             attivitaTable.setItems(null);
         }
+    }
+
+    @FXML
+    private void handleDeleteIscrizione() 
+    {
+        int selectedIndex = attivitaTable.getSelectionModel().getSelectedIndex();
+        Atleta selectedAtleta = atletiTable.getSelectionModel().getSelectedItem();
+        if (selectedIndex >= 0) {
+            AttivitaSportiva selectedAttivita = attivitaTable.getItems().get(selectedIndex);
+            System.out.println(selectedAttivita);
+            attivitaTable.getItems().remove(selectedIndex);
+            mainApp.polisportiva.rimuoviIscrizione(selectedAtleta, selectedAttivita);
+            showAttivitaDetails(selectedAtleta);
+            System.out.println(mainApp.polisportiva.getIscrizioni());
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("Nessuna Selezione");
+            alert.setHeaderText("Nessuna Attività relativa all'iscrizione Selezionata");
+            alert.setContentText("Per favore seleziona un'attività nella tabella.");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void handleNewIscrizione() 
+    {
+        Iscrizione tempIscrzione = new Iscrizione();
+        boolean okClicked = mainApp.showIscrizioniEditDialog(tempIscrzione);
+        if (okClicked) 
+        {
+            mainApp.polisportiva.getIscrizioni().add(tempIscrzione);
+        }
+    }
+
+    //@FXML
+    //private void handleEditIscrizione() 
+    //{
+        
+    //}
+
+    public void setIscrizioniaData(ObservableList<Iscrizione> iscrizioniData) {
+        
     }
 }

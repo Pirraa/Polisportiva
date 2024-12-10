@@ -1,0 +1,64 @@
+[ {
+  "firstName" : "Hans",
+  "lastName" : "Muster",
+  "street" : "some street",
+  "postalCode" : 1234,
+  "city" : "some city",
+  "birthday" : [ 1999, 2, 21 ]
+}, {
+  "firstName" : "Ruth",
+  "lastName" : "Mueller",
+  "street" : "some street",
+  "postalCode" : 1234,
+  "city" : "some city",
+  "birthday" : [ 1999, 2, 21 ]
+}, {
+  "firstName" : "Heinz",
+  "lastName" : "Kurz",
+  "street" : "some street",
+  "postalCode" : 1234,
+  "city" : "some city",
+  "birthday" : [ 1999, 2, 21 ]
+}, {
+  "firstName" : "Cornelia",
+  "lastName" : "Meier",
+  "street" : "some street",
+  "postalCode" : 1234,
+  "city" : "some city",
+  "birthday" : [ 1999, 2, 21 ]
+}, {
+  "firstName" : "Werner",
+  "lastName" : "Meyer",
+  "street" : "some street",
+  "postalCode" : 1234,
+  "city" : "some city",
+  "birthday" : [ 1999, 2, 21 ]
+}, {
+  "firstName" : "Lydia",
+  "lastName" : "Kunz",
+  "street" : "some street",
+  "postalCode" : 1234,
+  "city" : "some city",
+  "birthday" : [ 1999, 2, 21 ]
+}, {
+  "firstName" : "Anna",
+  "lastName" : "Best",
+  "street" : "some street",
+  "postalCode" : 1234,
+  "city" : "some city",
+  "birthday" : [ 1999, 2, 21 ]
+}, {
+  "firstName" : "Stefan",
+  "lastName" : "Meier",
+  "street" : "some street",
+  "postalCode" : 1234,
+  "city" : "some city",
+  "birthday" : [ 1999, 2, 21 ]
+}, {
+  "firstName" : "Martin",
+  "lastName" : "Mueller",
+  "street" : "some street",
+  "postalCode" : 1234,
+  "city" : "some city",
+  "birthday" : [ 1999, 2, 21 ]
+} ]

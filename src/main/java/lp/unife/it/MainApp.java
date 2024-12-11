@@ -240,6 +240,7 @@ public class MainApp extends Application {
             controller.setData(polisportiva.getAttivita(),polisportiva.getAtleti(),polisportiva.getIscrizioni());
             controller.setIscrizione(tempIscrizione);
             // Show the dialog and wait until the user closes it
+            controller.setMainApp(this);
             dialogStage.showAndWait();
             return controller.isOkClicked();
         } catch (IOException e) 
@@ -437,5 +438,70 @@ public class MainApp extends Application {
         }
         
     }
+
+    public File getFilePathIscrizioni() 
+    {
+        Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+        String filePath = prefs.get("iscrizioni", null);
+        if (filePath != null) {
+            return new File(filePath);
+        } else {
+            return null;
+        }
+    }
+
+    public void setFilePathIscrizioni(File file)
+    {
+        Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+        if (file != null) {
+            prefs.put("iscrizioni", file.getPath());
+            // Update the stage title.
+            primaryStage.setTitle("Iscrizioni - " + file.getName());
+        } else {
+            prefs.remove("iscrizioni");
+            // Update the stage title.
+            primaryStage.setTitle("Polisportiva");
+        }
+    }
+
+    public void loadIscrizioniDataFromFile(File file) 
+    {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            // Registra il modulo per supportare java.time.LocalDate
+            mapper.registerModule(new JavaTimeModule());
+            // Leggo lista di iscrizioni dal file poi la trasformo in observable list
+            polisportiva.setIscrizioni(FXCollections.observableArrayList(mapper.readValue(file, new TypeReference<List<Iscrizione>>() {})));
+            setFilePathIscrizioni(file);
+            showIscrizioni();
+        } catch (Exception e) { // catches ANY exception
+            System.out.println(e.getMessage());
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Could not load data");
+            alert.setContentText("Could not load data from file:\n" + file.getPath());
+            alert.showAndWait();
+        }
+    }
+
+    public void saveIscrizioniDataToFile(File iscrizioniFile) 
+    {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+            mapper.registerModule(new JavaTimeModule());
+            mapper.writeValue(iscrizioniFile, polisportiva.getIscrizioni());
+            // Save the file path to the registry.
+            setFilePathIscrizioni(iscrizioniFile);
+        } catch (Exception e) { // catches ANY exception
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Could not save data");
+            alert.setContentText("Could not save data to file:\n" + iscrizioniFile.getPath());
+            alert.showAndWait();
+        }
+       
+    }
+
 
 }

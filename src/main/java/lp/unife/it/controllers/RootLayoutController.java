@@ -183,4 +183,64 @@ public class RootLayoutController {
     {
         mainApp.showStatistiche();
     }
+
+     /**
+    * Opens a FileChooser to let the user select an address book to load.
+    *filechooser permette di scegliere file, aprendo classica finestra
+    */ @FXML
+    private void handleOpenIscrizione() 
+    {
+        FileChooser fileChooser= new FileChooser();
+            
+        // Set extension filter
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Json files (*.json)", "*.json");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File iscrizioneFile= mainApp.getFilePathIscrizioni();
+            
+        if(iscrizioneFile != null)
+        fileChooser.initialFileNameProperty().set(iscrizioneFile.getName());  
+        // Show save file dialog
+        File file= fileChooser.showOpenDialog(mainApp.getPrimaryStage());  
+        if (file != null) 
+        {
+            mainApp.loadIscrizioniDataFromFile(file);
+        }
+    }
+
+    /**
+    * Savesthe file to the person file that is currently open. If there is no
+    * open file, the "save as" dialog is shown
+    */ @FXML
+    private void handleSaveIscrizione() 
+    {
+        File iscrizioneFile= mainApp.getFilePathIscrizioni();
+        if(iscrizioneFile != null) {
+            mainApp.saveIscrizioniDataToFile(iscrizioneFile);
+        } else{
+            handleSaveAsIscrizione();
+        }
+    }
+
+    /**
+    * Opens a FileChooser to let the user select a file to save to.
+    */ @FXML
+    private void handleSaveAsIscrizione() 
+    {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter= new FileChooser .ExtensionFilter("Json files (*.json)", "*.json");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File iscrizioneFile= mainApp.getFilePathIscrizioni();
+        if(iscrizioneFile != null)
+            fileChooser.initialFileNameProperty().set(iscrizioneFile.getName());
+        // Show save file dialog
+        File file= fileChooser.showSaveDialog(mainApp.getPrimaryStage());
+        if(file != null) 
+        {
+            // Make sure it has the correct extension
+            if(!file.getPath().endsWith(".json")) {
+                file= new File(file.getPath()+ ".json");
+            }
+            mainApp.saveIscrizioniDataToFile(file);
+        }
+    }
 }

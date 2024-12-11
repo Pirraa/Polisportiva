@@ -135,7 +135,7 @@ public class Polisportiva {
     public ObservableList<AttivitaSportiva> getAttivitaPerAtleta(Atleta atleta) {
         ObservableList<AttivitaSportiva> result = FXCollections.observableArrayList();
         for (Iscrizione iscrizione : iscrizioni) {
-            if (iscrizione.getAtleta().equals(atleta)) {
+            if (iscrizione.getAtleta().getId()==atleta.getId()) {
                 result.add(iscrizione.getAttivita());
             }
         }
@@ -191,5 +191,14 @@ public class Polisportiva {
             }
         }
         return count;
+    }
+
+    public boolean cercaIscrizione(Atleta atleta, AttivitaSportiva attivitaSportiva) {
+        for (Iscrizione iscrizione : iscrizioni) {
+            if (iscrizione.getAtleta().equals(atleta) && iscrizione.getAttivita().equals(attivitaSportiva)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

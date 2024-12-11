@@ -62,13 +62,21 @@ public class IscrizioniEditDialogController {
      @FXML
     private void handleOk() 
     {
-        if (isInputValid()) 
+        if (isInputValid() && mainapp.polisportiva.cercaIscrizione(atletaCombo.getValue(), attivitaCombo.getValue())==false)
         {
             iscrizione.setAtleta(atletaCombo.getValue());
             iscrizione.setAttivita(attivitaCombo.getValue());
-
             okClicked = true;
             dialogStage.close();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(dialogStage);
+            alert.setTitle("Iscrizione già presente");
+            alert.setHeaderText("cambia atleta o attività");
+            alert.setContentText("Attività"+attivitaCombo.getValue().getNome()+" già presente per l'atleta "+atletaCombo.getValue().getNome());
+
+            alert.showAndWait();
+
         }
     }
           
@@ -102,6 +110,10 @@ public class IscrizioniEditDialogController {
 
             return false;
         }
+    }
+
+    public void setMainApp(MainApp mainapp) {
+        this.mainapp = mainapp;
     }
     
 }

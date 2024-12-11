@@ -31,9 +31,9 @@
             <Menu mnemonicParsing="false" text="Iscrizioni" >
                <items>
                   <MenuItem mnemonicParsing="false" text="Nuovo" onAction="#handleNewIscrizioni"/>
-                  <MenuItem mnemonicParsing="false" text="Apri" />
-                  <MenuItem mnemonicParsing="false" text="Salva" />
-                  <MenuItem mnemonicParsing="false" text="Salva con nome" />
+                  <MenuItem mnemonicParsing="false" text="Apri" onAction="#handleOpenIscrizione"/>
+                  <MenuItem mnemonicParsing="false" text="Salva" onAction="#handleSaveIscrizione" />
+                  <MenuItem mnemonicParsing="false" text="Salva con nome" onAction="#handleSaveAsIscrizione"/>
                </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Statistiche">

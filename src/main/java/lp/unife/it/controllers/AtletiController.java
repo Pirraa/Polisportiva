@@ -114,6 +114,7 @@ public class AtletiController
             // Rimuovi le iscrizioni collegate all'atleta
             ObservableList<Iscrizione> iscrizioniAtleta = mainApp.polisportiva.getIscrizioniPerAtleta(atletaSelezionato);
             mainApp.polisportiva.getIscrizioni().removeAll(iscrizioniAtleta);
+            attivitaPreferiteListView.setItems(FXCollections.observableArrayList());
     
             // Rimuovi l'atleta dalla tabella
             atletiTable.getItems().remove(selectedIndex);

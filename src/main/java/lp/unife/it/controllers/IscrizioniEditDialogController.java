@@ -73,7 +73,7 @@ public class IscrizioniEditDialogController {
             alert.initOwner(dialogStage);
             alert.setTitle("Iscrizione già presente");
             alert.setHeaderText("cambia atleta o attività");
-            alert.setContentText("Attività"+attivitaCombo.getValue().getNome()+" già presente per l'atleta "+atletaCombo.getValue().getNome());
+            alert.setContentText("o l'attività è già presente o nn la hai selezionata o è vuota, stessa cosa per atleta");
 
             alert.showAndWait();
 
@@ -89,10 +89,10 @@ public class IscrizioniEditDialogController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (attivitaCombo.getValue() == null) {
+        if (attivitaCombo.getValue() == null || attivitaCombo.getItems().size() == 0) {
             errorMessage += "Nessuna attività selezionata!\n";
         }
-        if (atletaCombo.getValue() == null) {
+        if (atletaCombo.getValue() == null || attivitaCombo.getItems().size() == 0) {
             errorMessage += "Nessun atleta selezionato!\n";
         }
 

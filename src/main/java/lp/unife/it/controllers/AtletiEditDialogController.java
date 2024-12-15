@@ -42,6 +42,11 @@ public class AtletiEditDialogController
 
     @FXML
     private void initialize() {
+        telephoneField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                telephoneField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
        
     }
 
@@ -114,7 +119,7 @@ public class AtletiEditDialogController
         if (addressField.getText() == null || addressField.getText().length() == 0) {
             errorMessage.append("No valid address!\n");
         }
-        if (emailField.getText() == null || emailField.getText().length() == 0) {
+        if (emailField.getText() == null || emailField.getText().length() == 0 || !emailField.getText().contains("@")) {
             errorMessage.append("No valid email!\n");
         }
         if (telephoneField.getText() == null || telephoneField.getText().length() == 0) {

@@ -1,67 +1,67 @@
 [ {
-  "id" : 1,
-  "nome" : "Mario",
-  "cognome" : "Rossi",
-  "dataNascita" : [ 1990, 1, 1 ],
-  "indirizzo" : "Via Roma 1",
-  "telefono" : "1234567890",
-  "email" : "mario.rossi@example.com",
-  "attivitaPreferite" : [ {
     "id" : 1,
-    "nome" : "Calcio",
-    "descrizione" : "Allenamento di calcio",
-    "orariPerGiorno" : {
-      "LUNEDI" : [ "09:00 - 10:00", "14:00 - 15:00" ],
-      "MERCOLEDI" : [ "10:00 - 11:00" ]
-    }
-  } ]
-}, {
-  "id" : 2,
-  "nome" : "Luigi",
-  "cognome" : "Verdi",
-  "dataNascita" : [ 1985, 2, 2 ],
-  "indirizzo" : "Via Milano 2",
-  "telefono" : "0987654321",
-  "email" : "luigi.verdi@example.com",
-  "attivitaPreferite" : [ {
-    "id" : 2,
-    "nome" : "Nuoto",
-    "descrizione" : "Allenamento di nuoto",
-    "orariPerGiorno" : {
-      "MARTEDI" : [ "11:00 - 12:00", "16:00 - 17:00" ],
-      "GIOVEDI" : [ "12:00 - 13:00" ]
-    }
-  } ]
-}, {
-  "id" : 4,
-  "nome" : "fggwrg",
-  "cognome" : "rwgherh",
-  "dataNascita" : [ 2012, 12, 12 ],
-  "indirizzo" : "hgrwehwrh",
-  "telefono" : "4252525",
-  "email" : "rgrgrewhe",
-  "attivitaPreferite" : [ {
-    "id" : 1,
-    "nome" : "Calcio",
-    "descrizione" : "Allenamento di calcio",
-    "orariPerGiorno" : {
-      "LUNEDI" : [ "09:00 - 10:00", "14:00 - 15:00" ],
-      "MERCOLEDI" : [ "10:00 - 11:00" ]
-    }
+    "nome" : "Mario",
+    "cognome" : "Rossi",
+    "dataNascita" : [ 1990, 1, 1 ],
+    "indirizzo" : "Via Roma 1",
+    "telefono" : "1234567890",
+    "email" : "mario.rossi@example.com",
+    "attivitaPreferite" : [ {
+      "id" : 1,
+      "nome" : "Calcio",
+      "descrizione" : "Allenamento di calcio",
+      "orariPerGiorno" : {
+        "LUNEDI" : [ "09:00 - 10:00", "14:00 - 15:00" ],
+        "MERCOLEDI" : [ "10:00 - 11:00" ]
+      }
+    } ]
   }, {
     "id" : 2,
-    "nome" : "Nuoto",
-    "descrizione" : "Allenamento di nuoto",
-    "orariPerGiorno" : {
-      "MARTEDI" : [ "11:00 - 12:00", "16:00 - 17:00" ],
-      "GIOVEDI" : [ "12:00 - 13:00" ]
-    }
+    "nome" : "Luigi",
+    "cognome" : "Verdi",
+    "dataNascita" : [ 1985, 2, 2 ],
+    "indirizzo" : "Via Milano 2",
+    "telefono" : "0987654321",
+    "email" : "luigi.verdi@example.com",
+    "attivitaPreferite" : [ {
+      "id" : 2,
+      "nome" : "Nuoto",
+      "descrizione" : "Allenamento di nuoto",
+      "orariPerGiorno" : {
+        "MARTEDI" : [ "11:00 - 12:00", "16:00 - 17:00" ],
+        "GIOVEDI" : [ "12:00 - 13:00" ]
+      }
+    } ]
   }, {
-    "id" : 7,
-    "nome" : "ffef",
-    "descrizione" : "wwgwg",
-    "orariPerGiorno" : {
-      "LUNEDI" : [ "01:28 - 13:28" ]
-    }
+    "id" : 4,
+    "nome" : "fggwrg",
+    "cognome" : "rwgherh",
+    "dataNascita" : [ 2012, 12, 12 ],
+    "indirizzo" : "hgrwehwrh",
+    "telefono" : "4252525",
+    "email" : "rgrgrewhe",
+    "attivitaPreferite" : [ {
+      "id" : 1,
+      "nome" : "Calcio",
+      "descrizione" : "Allenamento di calcio",
+      "orariPerGiorno" : {
+        "LUNEDI" : [ "09:00 - 10:00", "14:00 - 15:00" ],
+        "MERCOLEDI" : [ "10:00 - 11:00" ]
+      }
+    }, {
+      "id" : 2,
+      "nome" : "Nuoto",
+      "descrizione" : "Allenamento di nuoto",
+      "orariPerGiorno" : {
+        "MARTEDI" : [ "11:00 - 12:00", "16:00 - 17:00" ],
+        "GIOVEDI" : [ "12:00 - 13:00" ]
+      }
+    }, {
+      "id" : 7,
+      "nome" : "ffef",
+      "descrizione" : "wwgwg",
+      "orariPerGiorno" : {
+        "LUNEDI" : [ "01:28 - 13:28" ]
+      }
+    } ]
   } ]
-} ]

@@ -1,7 +1,9 @@
 lp\unife\it\models\Giorno.class
+lp\unife\it\controllers\IscrizioniEditDialogController.class
 lp\unife\it\DateUtil.class
 lp\unife\it\controllers\RootLayoutController.class
 lp\unife\it\controllers\AttivitaController.class
+lp\unife\it\controllers\StatisticheController.class
 module-info.class
 lp\unife\it\models\Polisportiva.class
 lp\unife\it\controllers\IscrizioniController.class
@@ -12,5 +14,6 @@ lp\unife\it\MainApp.class
 lp\unife\it\controllers\AtletiController.class
 lp\unife\it\models\Iscrizione.class
 lp\unife\it\MainApp$1.class
+lp\unife\it\MainApp$3.class
 lp\unife\it\controllers\AtletiEditDialogController.class
 lp\unife\it\models\Atleta.class

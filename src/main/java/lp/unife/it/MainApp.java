@@ -365,6 +365,7 @@ public class MainApp extends Application {
             polisportiva.setAtleti(FXCollections.observableArrayList( mapper.readValue(file, new TypeReference<List<Atleta>>() { })));
             setFilePathAtleti(file);
             showAtleti();
+            showIscrizioni();
         } catch (Exception e) { // catches ANY exception
             System.out.println(e.getMessage());
             Alert alert = new Alert(AlertType.ERROR);

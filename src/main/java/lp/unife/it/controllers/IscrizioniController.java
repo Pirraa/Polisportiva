@@ -33,6 +33,7 @@ public class IscrizioniController
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
         // Add observable list data to the tables
+        System.out.println(mainApp.polisportiva.getAtleti());
         atletiTable.setItems(mainApp.polisportiva.getAtleti());
     }
 

@@ -16,8 +16,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="92.0" text="Attività" />
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="98.0" text="Atleta" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="92.0" text="Atleta" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="98.0" text="Attività" GridPane.rowIndex="1" />
             <ComboBox fx:id="attivitaCombo" prefHeight="25.0" prefWidth="293.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ComboBox fx:id="atletaCombo" prefHeight="25.0" prefWidth="298.0" GridPane.columnIndex="1" />
          </children>

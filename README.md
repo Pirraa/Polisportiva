@@ -7,6 +7,7 @@ permetterà di aggiungere, modificare, e visualizzare informazioni su atleti e a
 sportive. Inoltre, gestirà la registrazione degli atleti alle attività sportive.
 Funzionalità Principali:
 1. Gestione Atleti:
+
 ● Aggiungere Atleta: Inserire i dettagli di un nuovo atleta (nome, cognome, data di
 nascita, indirizzo, numero di telefono, email, attività preferite).
 
@@ -17,7 +18,8 @@ nascita, indirizzo, numero di telefono, email, attività preferite).
 ● Visualizzare Lista Atleti: Mostrare una lista di tutti gli atleti registrati con i dettagli
 principali.
 
-3. Gestione Attività Sportive:
+2. Gestione Attività Sportive:
+
 ● Aggiungere Attività Sportiva: Creare una nuova attività sportiva (es. calcio, pallavolo,
 basket) specificando nome, descrizione, orari e giorni.
 
@@ -28,12 +30,14 @@ basket) specificando nome, descrizione, orari e giorni.
 ● Visualizzare Attività Sportive: Elencare tutte le attività sportive disponibili con i
 dettagli principali.
 
-5. Iscrizioni:
+3. Iscrizioni:
+
 ● Iscrivere Atleta a un'Attività: Permettere agli atleti di iscriversi a una o più attività
 sportive.
 
 ● Visualizzare Iscrizioni Atleta: Mostrare tutte le attività e gli eventi a cui un atleta è
 iscritto.
 
-7. Rapporti e Statistiche:
+4. Rapporti e Statistiche:
+
 ● Visualizzare Statistiche Atleti: Numero di atleti iscritti per attività sportiva.

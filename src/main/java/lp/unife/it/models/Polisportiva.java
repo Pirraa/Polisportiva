@@ -185,8 +185,10 @@ public class Polisportiva {
     // Metodi per gestire statistiche
     public int numeroAtletiIscrittiPerAttivita(AttivitaSportiva attivitaSportiva) {
         int count = 0;
+        //System.out.println("attività"+attivitaSportiva);
         for (Iscrizione iscrizione : iscrizioni) {
-            if (iscrizione.getAttivita().equals(attivitaSportiva)) {
+            //System.out.println("iscrizione "+iscrizione.getAttivita());
+            if (iscrizione.getAttivita().getId()==attivitaSportiva.getId()) {
                 count++;
             }
         }

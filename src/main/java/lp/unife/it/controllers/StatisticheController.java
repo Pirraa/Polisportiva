@@ -31,15 +31,23 @@ public class StatisticheController {
     
         public void setData(ObservableList<Atleta> atleti, ObservableList<AttivitaSportiva> attivita, ObservableList<Iscrizione> iscrizioni) 
         {
-            attivitàNames=attivita.stream().map(AttivitaSportiva::getNome).collect(Collectors.toCollection(FXCollections::observableArrayList));
+            //attivitàNames=attivita.stream().map(AttivitaSportiva::getNome).collect(Collectors.toCollection(FXCollections::observableArrayList));
+            attivitàNames = attivita.stream()
+                .map(a -> a.getNome() + " - " + a.getDescrizione())
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
+            attivitàNames = attivitàNames.stream().distinct().collect(Collectors.toCollection(FXCollections::observableArrayList));
             xAxis.setCategories(attivitàNames);
+
+            // Pulisci i dati del grafico prima di aggiungere nuovi dati
+            barChart.getData().clear();
     
-            for(AttivitaSportiva a : attivita)
+            for(int i=0; i<attivita.size(); i++)
             {
                 XYChart.Series<String, Integer> series = new XYChart.Series<>();
-                series.setName(a.getNome());
-                int num=mainApp.polisportiva.numeroAtletiIscrittiPerAttivita(a);
-                series.getData().add(new XYChart.Data<>(a.getNome(), num));
+                series.setName(attivitàNames.get(i));
+                int num=mainApp.polisportiva.numeroAtletiIscrittiPerAttivita(attivita.get(i));
+                System.out.println(num);
+                series.getData().add(new XYChart.Data<>(attivitàNames.get(i), num));
                 barChart.getData().add(series);
             }
         }

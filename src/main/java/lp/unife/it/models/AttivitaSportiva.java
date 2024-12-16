@@ -83,6 +83,7 @@ public class AttivitaSportiva {
     @Override
     public String toString() {
         return "AttivitaSportiva{" +
+        "id=" + id.get() +
                 "nome=" + nome.get() +
                 ", descrizione=" + descrizione.get() +
                 ", orariPerGiorno=" + orariPerGiorno +

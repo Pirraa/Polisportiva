@@ -11,14 +11,14 @@
   "nome" : "Nuoto",
   "descrizione" : "Allenamento di nuoto",
   "orariPerGiorno" : {
-    "MARTEDI" : [ "11:00 - 12:00", "16:00 - 17:00" ],
-    "GIOVEDI" : [ "12:00 - 13:00" ]
+    "GIOVEDI" : [ "12:00 - 13:00" ],
+    "MARTEDI" : [ "11:00 - 12:00", "16:00 - 17:00" ]
   }
 }, {
-  "id" : 7,
-  "nome" : "ffef",
-  "descrizione" : "wwgwg",
+  "id" : 18,
+  "nome" : "gggggh",
+  "descrizione" : "hhhhh",
   "orariPerGiorno" : {
-    "LUNEDI" : [ "01:28 - 13:28" ]
+    "LUNEDI" : [ "12:28 - 13:28" ]
   }
 } ]

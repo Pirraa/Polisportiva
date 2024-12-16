@@ -33,7 +33,7 @@ public class IscrizioniController
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
         // Add observable list data to the tables
-        System.out.println(mainApp.polisportiva.getAtleti());
+        //System.out.println(mainApp.polisportiva.getAtleti());
         atletiTable.setItems(mainApp.polisportiva.getAtleti());
     }
 
@@ -76,11 +76,11 @@ public class IscrizioniController
         Atleta selectedAtleta = atletiTable.getSelectionModel().getSelectedItem();
         if (selectedIndex >= 0) {
             AttivitaSportiva selectedAttivita = attivitaTable.getItems().get(selectedIndex);
-            System.out.println(selectedAttivita);
+            //System.out.println(selectedAttivita);
             attivitaTable.getItems().remove(selectedIndex);
             mainApp.polisportiva.rimuoviIscrizione(selectedAtleta, selectedAttivita);
             showAttivitaDetails(selectedAtleta);
-            System.out.println(mainApp.polisportiva.getIscrizioni());
+            //System.out.println(mainApp.polisportiva.getIscrizioni());
         } else {
             // Nothing selected.
             Alert alert = new Alert(AlertType.WARNING);

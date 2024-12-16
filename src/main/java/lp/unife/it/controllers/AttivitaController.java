@@ -88,8 +88,8 @@ public class AttivitaController
             // Atleta is null, remove all the text.
             nomeLabel.setText("");
             descrizioneLabel.setText("");
-            orariLabel.setText("");
-            giorniLabel.setText("");
+            //orariLabel.setText("");
+            //giorniLabel.setText("");
         }
     }
 
@@ -103,7 +103,7 @@ public class AttivitaController
             ObservableList<Iscrizione> iscrizioni = mainApp.polisportiva.getIscrizioniPerAttivita(selectedAttivita);
             mainApp.polisportiva.getIscrizioni().removeAll(iscrizioni);
             attivitaTable.getItems().remove(selectedIndex);
-            System.out.println(mainApp.polisportiva.getAttivita());
+            //System.out.println(mainApp.polisportiva.getAttivita());
         } else {
             // Nothing selected.
             Alert alert = new Alert(AlertType.WARNING);

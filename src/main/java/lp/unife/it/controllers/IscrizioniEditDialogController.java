@@ -14,6 +14,7 @@ import lp.unife.it.models.Atleta;
 import lp.unife.it.models.AttivitaSportiva;
 import lp.unife.it.models.Giorno;
 import lp.unife.it.models.Iscrizione;
+import javafx.util.StringConverter;
 
 public class IscrizioniEditDialogController {
     private Stage dialogStage;
@@ -32,7 +33,8 @@ public class IscrizioniEditDialogController {
     @FXML
     private void initialize() 
     {
-    
+        attivitaCombo.setConverter(new AttivitaSportivaStringConverter());
+        atletaCombo.setConverter(new AtletaStringConverter());
     }
 
     
@@ -117,3 +119,39 @@ public class IscrizioniEditDialogController {
     }
     
 }
+
+
+
+class AtletaStringConverter extends StringConverter<Atleta> {
+    @Override
+    public String toString(Atleta atleta) {
+        if (atleta == null) {
+            return "";
+        }
+        return atleta.getNome() + " " + atleta.getCognome();
+    }
+
+    @Override
+    public Atleta fromString(String string) {
+        // Non è necessario implementare questo metodo per la visualizzazione
+        return null;
+    }
+}
+
+
+class AttivitaSportivaStringConverter extends StringConverter<AttivitaSportiva> {
+    @Override
+    public String toString(AttivitaSportiva attivita) {
+        if (attivita == null) {
+            return "";
+        }
+        return attivita.getNome() + " - " + attivita.getDescrizione();
+    }
+
+    @Override
+    public AttivitaSportiva fromString(String string) {
+        // Non è necessario implementare questo metodo per la visualizzazione
+        return null;
+    }
+}
+

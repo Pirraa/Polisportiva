@@ -1,24 +1,152 @@
 [ {
   "id" : 1,
-  "nome" : "Calcio",
-  "descrizione" : "Allenamento di calcio",
-  "orariPerGiorno" : {
-    "LUNEDI" : [ "09:00 - 10:00", "14:00 - 15:00" ],
-    "MERCOLEDI" : [ "10:00 - 11:00" ]
-  }
+  "nome" : "Mario",
+  "cognome" : "Rossi",
+  "dataNascita" : [ 1990, 1, 1 ],
+  "indirizzo" : "Via Roma 1",
+  "telefono" : "1234567890",
+  "email" : "mario.rossi@example.com",
+  "attivitaPreferite" : [ {
+    "id" : 1,
+    "nome" : "Calcio",
+    "descrizione" : "Allenamento di calcio",
+    "orariPerGiorno" : {
+      "MERCOLEDI" : [ "10:00 - 11:00" ],
+      "LUNEDI" : [ "09:00 - 10:00", "14:00 - 15:00" ]
+    }
+  } ]
 }, {
   "id" : 2,
-  "nome" : "Nuoto",
-  "descrizione" : "Allenamento di nuoto",
-  "orariPerGiorno" : {
-    "GIOVEDI" : [ "12:00 - 13:00" ],
-    "MARTEDI" : [ "11:00 - 12:00", "16:00 - 17:00" ]
-  }
+  "nome" : "Luigi",
+  "cognome" : "Verdi",
+  "dataNascita" : [ 1985, 2, 2 ],
+  "indirizzo" : "Via Milano 2",
+  "telefono" : "0987654321",
+  "email" : "luigi.verdi@example.com",
+  "attivitaPreferite" : [ {
+    "id" : 2,
+    "nome" : "Nuoto",
+    "descrizione" : "Allenamento di nuoto",
+    "orariPerGiorno" : {
+      "GIOVEDI" : [ "12:00 - 13:00" ],
+      "MARTEDI" : [ "11:00 - 12:00", "16:00 - 17:00" ]
+    }
+  } ]
 }, {
-  "id" : 18,
-  "nome" : "gggggh",
-  "descrizione" : "hhhhh",
-  "orariPerGiorno" : {
-    "LUNEDI" : [ "12:28 - 13:28" ]
-  }
+  "id" : 4,
+  "nome" : "mario",
+  "cognome" : "gialli",
+  "dataNascita" : [ 2005, 3, 27 ],
+  "indirizzo" : "via erminia 47",
+  "telefono" : "73471947104719",
+  "email" : "cbbiwebiw@gmail.com",
+  "attivitaPreferite" : [ {
+    "id" : 1,
+    "nome" : "Calcio",
+    "descrizione" : "Allenamento di calcio",
+    "orariPerGiorno" : {
+      "MERCOLEDI" : [ "10:00 - 11:00" ],
+      "LUNEDI" : [ "09:00 - 10:00", "14:00 - 15:00" ]
+    }
+  }, {
+    "id" : 2,
+    "nome" : "Nuoto",
+    "descrizione" : "Allenamento di nuoto",
+    "orariPerGiorno" : {
+      "GIOVEDI" : [ "12:00 - 13:00" ],
+      "MARTEDI" : [ "11:00 - 12:00", "16:00 - 17:00" ]
+    }
+  } ]
+}, {
+  "id" : 6,
+  "nome" : "eleonora",
+  "cognome" : "basso",
+  "dataNascita" : [ 2010, 10, 30 ],
+  "indirizzo" : "vi de gasperi 30",
+  "telefono" : "432152463463",
+  "email" : "cwvwbirwe@gmai.com",
+  "attivitaPreferite" : [ {
+    "id" : 4,
+    "nome" : "atletica",
+    "descrizione" : "getto del peso",
+    "orariPerGiorno" : {
+      "SABATO" : [ "20:30 - 21:30" ]
+    }
+  }, {
+    "id" : 5,
+    "nome" : "atletica",
+    "descrizione" : "100 metri",
+    "orariPerGiorno" : {
+      "VENERDI" : [ "18:30 - 19:45", "21:30 - 22:30", "11:40 - 13:40" ]
+    }
+  } ]
+}, {
+  "id" : 8,
+  "nome" : "giammarco",
+  "cognome" : "tocco",
+  "dataNascita" : [ 1999, 11, 18 ],
+  "indirizzo" : "via eridania 47",
+  "telefono" : "381294801347",
+  "email" : "iofjewofjwo@grnr.ov",
+  "attivitaPreferite" : [ {
+    "id" : 3,
+    "nome" : "sci",
+    "descrizione" : "10 km",
+    "orariPerGiorno" : {
+      "LUNEDI" : [ "12:30 - 16:30" ]
+    }
+  }, {
+    "id" : 4,
+    "nome" : "atletica",
+    "descrizione" : "getto del peso",
+    "orariPerGiorno" : {
+      "SABATO" : [ "20:30 - 21:30" ]
+    }
+  } ]
+}, {
+  "id" : 10,
+  "nome" : "emanuele",
+  "cognome" : "righini",
+  "dataNascita" : [ 1998, 2, 23 ],
+  "indirizzo" : "via erdon 45",
+  "telefono" : "4233252524534",
+  "email" : "sdvgsb@gmail.com",
+  "attivitaPreferite" : [ {
+    "id" : 3,
+    "nome" : "sci",
+    "descrizione" : "10 km",
+    "orariPerGiorno" : {
+      "LUNEDI" : [ "12:30 - 16:30" ]
+    }
+  }, {
+    "id" : 7,
+    "nome" : "sci",
+    "descrizione" : "staffetta 5 km mista",
+    "orariPerGiorno" : {
+      "GIOVEDI" : [ "12:30 - 15:30" ]
+    }
+  } ]
+}, {
+  "id" : 12,
+  "nome" : "ernesto",
+  "cognome" : "ordini",
+  "dataNascita" : [ 1997, 10, 23 ],
+  "indirizzo" : "viale de gasperi 45",
+  "telefono" : "636363",
+  "email" : "gdhdhdt@gnfn",
+  "attivitaPreferite" : [ {
+    "id" : 3,
+    "nome" : "sci",
+    "descrizione" : "10 km",
+    "orariPerGiorno" : {
+      "LUNEDI" : [ "12:30 - 16:30" ]
+    }
+  }, {
+    "id" : 4,
+    "nome" : "atletica",
+    "descrizione" : "getto del peso",
+    "orariPerGiorno" : {
+      "SABATO" : [ "20:30 - 21:30" ]
+    }
+  } ]
 } ]

@@ -51,8 +51,8 @@ public class MainApp extends Application {
             showAttivita();
             showIscrizioni();
         }
-        primaryStage.setMinWidth(1380);
-        primaryStage.setMinHeight(800);
+        primaryStage.setMinWidth(1200);
+        primaryStage.setMinHeight(720);
     }
 
     public MainApp()

@@ -77,7 +77,7 @@ public class AtletiController
     {
         if (atleta != null) 
         {
-            System.out.println(mainApp.polisportiva.getIscrizioniPerAtleta(atleta));
+            //System.out.println(mainApp.polisportiva.getIscrizioniPerAtleta(atleta));
             // Fill the labels with info from the atleta object.
             firstNameLabel.setText(atleta.getNome());
             lastNameLabel.setText(atleta.getCognome());
@@ -119,7 +119,7 @@ public class AtletiController
             // Rimuovi l'atleta dalla tabella
             atletiTable.getItems().remove(selectedIndex);
     
-            System.out.println(mainApp.polisportiva.getAtleti());
+            //System.out.println(mainApp.polisportiva.getAtleti());
         } 
         else
         {

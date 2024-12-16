@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import lp.unife.it.models.AttivitaSportiva;
 import lp.unife.it.models.Giorno;
 
@@ -103,8 +104,8 @@ public class AttivitaEditDialogController {
             giorniOrariList.add(giornoOrario);
             giorniOrariMap.computeIfAbsent(giorno, k -> new ArrayList<>()).add(orarioInizio + " - " + orarioFine);
             giorniOrariList.removeIf(String::isEmpty); // Rimuovi eventuali elementi vuoti
-            System.out.println("Elemento aggiunto alla lista giorniOrariList: " + giornoOrario);
-            System.out.println(giorniOrariList + "  " + giorniOrariList.size());
+            //System.out.println("Elemento aggiunto alla lista giorniOrariList: " + giornoOrario);
+            //System.out.println(giorniOrariList + "  " + giorniOrariList.size());
             orarioInizioField.clear();
             orarioFineField.clear();
         } else {
@@ -164,8 +165,8 @@ public class AttivitaEditDialogController {
 
     private boolean isInputValid() {
         StringBuilder errorMessage = new StringBuilder();
-        System.out.println("Stato della lista giorniOrariList: " + giorniOrariList);
-        System.out.println("Dimensione della lista giorniOrariList: " + giorniOrariList.size());
+        //System.out.println("Stato della lista giorniOrariList: " + giorniOrariList);
+        //System.out.println("Dimensione della lista giorniOrariList: " + giorniOrariList.size());
 
         if (nomeField.getText() == null || nomeField.getText().length() == 0) {
             errorMessage.append("Nome non valido!\n");
@@ -216,5 +217,21 @@ public class AttivitaEditDialogController {
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+}
+
+class AttivitaSportivaStringConverter extends StringConverter<AttivitaSportiva> {
+    @Override
+    public String toString(AttivitaSportiva attivita) {
+        if (attivita == null) {
+            return "";
+        }
+        return attivita.getNome() + " - " + attivita.getDescrizione();
+    }
+
+    @Override
+    public AttivitaSportiva fromString(String string) {
+        // Non è necessario implementare questo metodo per la visualizzazione
+        return null;
     }
 }

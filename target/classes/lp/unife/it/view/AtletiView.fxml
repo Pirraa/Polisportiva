@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
@@ -11,6 +12,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lp.unife.it.controllers.AtletiController">
    <children>
@@ -20,7 +22,7 @@
                <children>
                   <TableView fx:id="atletiTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                    <TableColumn fx:id="idColumn" visible="false" prefWidth="75.0" text="ID" />
+                    <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" visible="false" />
                       <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="Nome" />
                       <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Cognome" />
                     </columns>
@@ -32,47 +34,103 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="Dettagli persone" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-                  <GridPane layoutX="14.0" layoutY="32.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
+                  <GridPane alignment="CENTER" layoutX="14.0" layoutY="32.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                      <ColumnConstraints hgrow="ALWAYS" maxWidth="117.0" minWidth="10.0" prefWidth="117.0" />
+                      <ColumnConstraints hgrow="ALWAYS" maxWidth="319.0" minWidth="10.0" prefWidth="290.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
                     </rowConstraints>
                      <children>
-                        <Label text="Nome" />
-                        <Label fx:id="firstNameLabel" prefHeight="17.0" prefWidth="108.0" text="Label" GridPane.columnIndex="1" />
-                        <Label text="Cognome" GridPane.rowIndex="1" />
-                        <Label fx:id="lastNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Data di nascita" GridPane.rowIndex="2" />
-                        <Label fx:id="birthdayLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label text="Indirizzo" GridPane.rowIndex="3" />
-                        <Label fx:id="addressLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label text="Telefono" GridPane.rowIndex="4" />
-                        <Label fx:id="telephoneLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label text="Email" GridPane.rowIndex="5" />
-                        <Label fx:id="emailLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <ListView fx:id="attivitaPreferiteListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.rowSpan="2" />
-                        <Label text="Attività preferite" GridPane.rowIndex="6" />
+                        <Label text="Nome" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="firstNameLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font></Label>
+                        <Label text="Cognome" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lastNameLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font></Label>
+                        <Label text="Data di nascita" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="birthdayLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font></Label>
+                        <Label text="Indirizzo" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="addressLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font></Label>
+                        <Label text="Telefono" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="telephoneLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font></Label>
+                        <Label text="Email" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="emailLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font></Label>
+                        <ListView fx:id="attivitaPreferiteListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                        <Label text="Attività preferite" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font></Label>
+                        <ButtonBar prefHeight="34.0" prefWidth="407.0" GridPane.columnSpan="2" GridPane.rowIndex="9">
+                          <buttons>
+                              <Button mnemonicParsing="false" onAction="#handleNewAtleta" prefHeight="40.0" text="Aggiungi" textFill="#1739bf">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font></Button>
+                              <Button mnemonicParsing="false" onAction="#handleEditAtleta" prefHeight="40.0" text="Modifica" textFill="#0b4a0c">
+                                 <font>
+                                    <Font name="Times New Roman" size="14.0" />
+                                 </font></Button>
+                              <Button mnemonicParsing="false" onAction="#handleDeleteAtleta" prefHeight="40.0" text="Elimina" textFill="#d00d0d">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font></Button>
+                          </buttons>
+                           <GridPane.margin>
+                              <Insets bottom="10.0" right="10.0" />
+                           </GridPane.margin>
+                        </ButtonBar>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Dettagli persone" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+                           <font>
+                              <Font name="Arial Black" size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                   </GridPane>
-                  <ButtonBar prefHeight="30.0" prefWidth="340.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
-                    <buttons>
-                        <Button mnemonicParsing="false" onAction="#handleNewAtleta" text="Aggiungi" />
-                        <Button mnemonicParsing="false" onAction="#handleEditAtleta" text="Modifica" />
-                        <Button mnemonicParsing="false" onAction="#handleDeleteAtleta" text="Elimina" />
-                    </buttons>
-                  </ButtonBar>
                </children>
             </AnchorPane>
         </items>

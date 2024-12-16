@@ -12,6 +12,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import lp.unife.it.DateUtil;
 import lp.unife.it.models.Atleta;
 import lp.unife.it.models.AttivitaSportiva;
@@ -43,11 +44,11 @@ public class AtletiEditDialogController
     @FXML
     private void initialize() {
         telephoneField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
+            if (newValue != null && !newValue.matches("\\d*")) {
                 telephoneField.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
-       
+        comboAttivitaPreferite.setConverter(new AttivitaSportivaStringConverter());
     }
 
     public void setDialogStage(Stage dialogStage) 
@@ -158,3 +159,20 @@ public class AtletiEditDialogController
         }
     }
 }
+
+class AttivitaSportivaStringConverter extends StringConverter<AttivitaSportiva> {
+    @Override
+    public String toString(AttivitaSportiva attivita) {
+        if (attivita == null) {
+            return "";
+        }
+        return attivita.getNome() + " - " + attivita.getDescrizione();
+    }
+
+    @Override
+    public AttivitaSportiva fromString(String string) {
+        // Non è necessario implementare questo metodo per la visualizzazione
+        return null;
+    }
+}
+

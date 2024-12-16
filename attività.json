@@ -1,0 +1,60 @@
+[ {
+  "id" : 1,
+  "nome" : "Calcio",
+  "descrizione" : "Allenamento di calcio",
+  "orariPerGiorno" : {
+    "MERCOLEDI" : [ "10:00 - 11:00" ],
+    "LUNEDI" : [ "09:00 - 10:00", "14:00 - 15:00" ]
+  }
+}, {
+  "id" : 2,
+  "nome" : "Nuoto",
+  "descrizione" : "Allenamento di nuoto",
+  "orariPerGiorno" : {
+    "GIOVEDI" : [ "12:00 - 13:00" ],
+    "MARTEDI" : [ "11:00 - 12:00", "16:00 - 17:00" ]
+  }
+}, {
+  "id" : 3,
+  "nome" : "sci",
+  "descrizione" : "10 km",
+  "orariPerGiorno" : {
+    "LUNEDI" : [ "12:30 - 16:30" ]
+  }
+}, {
+  "id" : 4,
+  "nome" : "atletica",
+  "descrizione" : "getto del peso",
+  "orariPerGiorno" : {
+    "SABATO" : [ "20:30 - 21:30" ]
+  }
+}, {
+  "id" : 5,
+  "nome" : "atletica",
+  "descrizione" : "100 metri",
+  "orariPerGiorno" : {
+    "VENERDI" : [ "18:30 - 19:45", "21:30 - 22:30", "11:40 - 13:40" ]
+  }
+}, {
+  "id" : 6,
+  "nome" : "tennis",
+  "descrizione" : "rovesci",
+  "orariPerGiorno" : {
+    "SABATO" : [ "20:30 - 21:30" ],
+    "LUNEDI" : [ "14:30 - 16:30" ]
+  }
+}, {
+  "id" : 7,
+  "nome" : "sci",
+  "descrizione" : "staffetta 5 km mista",
+  "orariPerGiorno" : {
+    "GIOVEDI" : [ "12:30 - 15:30" ]
+  }
+}, {
+  "id" : 8,
+  "nome" : "calcio",
+  "descrizione" : "rigori",
+  "orariPerGiorno" : {
+    "MERCOLEDI" : [ "12:00 - 13:00" ]
+  }
+} ]

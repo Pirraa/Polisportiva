@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
@@ -7,6 +8,10 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lp.unife.it.controllers.IscrizioniController">
    <children>
@@ -28,20 +33,52 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="Dettagli iscrizioni" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-                  <TableView fx:id="attivitaTable" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0" AnchorPane.bottomAnchor="60.0">
-                    <columns>
-                      <TableColumn fx:id="idAttivitaColumn" prefWidth="75.0" text="ID" visible="false" />
-                      <TableColumn fx:id="nomeAttivitaColumn" prefWidth="150.0" text="Nome Attività" />
-                      <TableColumn fx:id="descrizioneAttivitaColumn" prefWidth="150.0" text="Descrizione" />
-                    </columns>
-                  </TableView>
-                  <ButtonBar layoutX="148.0" layoutY="244.0" prefHeight="49.0" prefWidth="264.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
-                    <buttons>
-                      <Button mnemonicParsing="false" text="Aggiungi" onAction="#handleNewIscrizione"/>
-                      <Button mnemonicParsing="false" text="Elimina" onAction="#handleDeleteIscrizione"/>
-                    </buttons>
-                  </ButtonBar>
+                  <GridPane alignment="CENTER" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+                     <children>
+                        <TableView fx:id="attivitaTable" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                          <columns>
+                            <TableColumn fx:id="idAttivitaColumn" prefWidth="75.0" text="ID" visible="false" />
+                            <TableColumn fx:id="nomeAttivitaColumn" prefWidth="150.0" text="Nome Attività" />
+                            <TableColumn fx:id="descrizioneAttivitaColumn" prefWidth="150.0" text="Descrizione" />
+                          </columns>
+                        </TableView>
+                        <Label text="Dettagli iscrizioni" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="Arial Black" size="18.0" />
+                           </font></Label>
+                        <ButtonBar prefHeight="34.0" prefWidth="407.0" GridPane.columnSpan="2" GridPane.rowIndex="9">
+                          <buttons>
+                              <Button mnemonicParsing="false" onAction="#handleNewIscrizione" prefHeight="40.0" text="Aggiungi" textFill="#1739bf">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font></Button>
+                              <Button mnemonicParsing="false" onAction="#handleDeleteIscrizione" prefHeight="40.0" text="Elimina" textFill="#d00d0d">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="14.0" />
+                                 </font></Button>
+                          </buttons>
+                           <GridPane.margin>
+                              <Insets bottom="20.0" right="100.0" />
+                           </GridPane.margin>
+                        </ButtonBar>
+                     </children>
+                  </GridPane>
                </children>
             </AnchorPane>
         </items>

@@ -170,7 +170,8 @@ public class Polisportiva {
     public boolean rimuoviIscrizione(Atleta atleta, AttivitaSportiva attivitaSportiva) {
         Iscrizione iscrizioneToRemove = null;
         for (Iscrizione iscrizione : iscrizioni) {
-            if (iscrizione.getAtleta().equals(atleta) && iscrizione.getAttivita().equals(attivitaSportiva)) {
+            if (iscrizione.getAtleta().getId()==atleta.getId() && iscrizione.getAttivita().getId()==attivitaSportiva.getId()) {
+                System.out.println("iscrizione da rimuovere "+iscrizione+"\natleta "+atleta+"\nattività "+attivitaSportiva);
                 iscrizioneToRemove = iscrizione;
                 break;
             }

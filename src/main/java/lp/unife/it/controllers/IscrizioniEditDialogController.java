@@ -138,20 +138,3 @@ class AtletaStringConverter extends StringConverter<Atleta> {
     }
 }
 
-
-class AttivitaSportivaStringConverter extends StringConverter<AttivitaSportiva> {
-    @Override
-    public String toString(AttivitaSportiva attivita) {
-        if (attivita == null) {
-            return "";
-        }
-        return attivita.getNome() + " - " + attivita.getDescrizione();
-    }
-
-    @Override
-    public AttivitaSportiva fromString(String string) {
-        // Non è necessario implementare questo metodo per la visualizzazione
-        return null;
-    }
-}
-
